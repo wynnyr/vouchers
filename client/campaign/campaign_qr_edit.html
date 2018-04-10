@@ -1,0 +1,10 @@
+<template name="campaignQREdit"> 
+      {{#if ownCampaign campaign}}
+            <div class="campaign-page page">
+                  {{> campaignItem campaign}} 
+                  <ul class="qrcodes">
+                        {{>qrcodeEdit qrcode}}
+                  </ul>
+            </div>
+      {{/if}}
+</template>

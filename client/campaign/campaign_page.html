@@ -1,0 +1,20 @@
+<template name="campaignPage"> 
+   <div class="campaign-page page"> 
+    {{> campaignItem campaign}} 
+    
+    <ul class="qrcodes">
+      {{#each qrcodes}}
+        {{> qrcodeItem}}
+      {{/each}}
+
+    {{#if nextPath}}
+        <a class="load-more" href="{{nextPath}}">Load more</a>
+    {{else}}
+      {{#unless ready}}
+        {{> spinner}}
+      {{/unless}}
+    {{/if}}
+  
+    </ul>
+  </div> 
+</template>

@@ -1,0 +1,19 @@
+<template name="campaignItem">
+    <div class="campaign">
+        <div class="campaign-content col-lg-9">
+            <h3><a href="{{pathFor 'campaignPage'}}">{{title}}</a></h3>
+            <div>
+                <a href="{{pathFor 'campaignPage'}}">{{qrcodesCount}} qrcode</a>
+                <spin>/</spin>
+                <a href="{{pathFor 'campaignPage'}}">{{redeemed}} redeemed</a>
+            </div>
+            <div>
+                created by {{author}}
+            </div>
+        </div>
+        <div class="col-lg-3">
+            {{#if ownCampaign}}<a href="{{pathFor 'campaignQRInsert'}}" class="view btn btn-default">Add</a>{{/if}}
+            {{#if ownCampaign}}<a href="{{pathFor 'campaignEdit'}}" class="view btn btn-default">Edit</a>{{/if}}
+        </div>
+    </div>
+</template>

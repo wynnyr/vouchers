@@ -1,0 +1,28 @@
+.redeem-content h1.campaign-title {
+   font-size: 30px;
+   font-weight: normal;
+   padding: 10px 20px 5px 20px;
+   color: #444;
+   text-align: center;
+}
+
+.redeem-content div.campaign-title-body {
+   color: #777;
+   text-align: center;
+   padding: 0 3px 5px 3px;
+   font-size: .8em;
+}
+
+.article {
+   margin-top: 10px;
+   background: #fff;
+   text-align: left;
+   padding-bottom: 10px;
+}
+
+.redeembody pre {
+   display: block;
+   font-family: monospace;
+   white-space:pre-line;
+   margin: 1em 0;
+}

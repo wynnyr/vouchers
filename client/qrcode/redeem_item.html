@@ -1,0 +1,36 @@
+<template name="redeemItem">
+
+   <div class = "redeem-content">
+      <h1 class = "campaign-title">{{campaign.title}}</h1>
+      <div class = "campaign-title-body">
+         <div>{{campaign.number}}</div>
+         <div>Expiration Date: {{dateend campaign.enddate}}</div>   
+      </div>
+      <br>
+      <div>{{{imageSoure campaignImage}}}</div>
+
+      <div class="article-name">
+         <h2 style="color:#ffffff;background:#11b3ef">
+            <span class="article-name">{{campaign.headline}}</span>
+         </h2>
+      </div>
+      <div class="web-container">
+      <p><pre class = "redeembody">{{campaign.desc}}</pre></p>
+      <p><pre class = "redeembody">{{qrcode.body}}</pre></p>
+      </div>
+      <a class="redeem" href="{{qrcode.code}}">Redeem</a>
+
+      <form>
+         <div class="form-group {{errorClass 'shopcode'}}">
+            <label class="control-label" for="number">Shop Code</label>
+            <div class="controls">
+               <input class="form-control" name="shopcode" id="shopcode" type="text" value="{{shopcode}}" placeholder="shop code" />
+               <span class="help-block">{{errorMessage 'shopcode'}}</span>
+            </div>
+         </div>
+         <input type="submit" value="submit"/>
+      </form>
+
+   </div>
+</template>
+

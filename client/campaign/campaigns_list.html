@@ -1,0 +1,15 @@
+<template name="campaignsList">
+   <div class="campaigns">
+    {{#each campaigns}}
+      {{> campaignItem}}
+    {{/each}}
+
+    {{#if nextPath}}
+      <a class="load-more" href="{{nextPath}}">More...</a>
+    {{else}}
+      {{#unless ready}}
+        {{> spinner}}
+      {{/unless}}
+    {{/if}}
+   </div>
+ </template>

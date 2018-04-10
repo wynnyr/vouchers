@@ -1,0 +1,84 @@
+<template name="campaignEdit">
+  {{#if ownCampaign campaign}}
+  <form class="main form page">
+    <h2>Campaign Information</h2>
+    <br>
+    <div class="form-group {{errorClass 'title'}}">
+      <label class="control-label" for="title">Title</label>
+      <div class="controls">
+        <input name="title" id="title" type="text" value="{{campaign.title}}" placeholder="Title" class="form-control" maxlength="50"/>
+        <span class="help-block">{{errorMessage 'title'}}</span>
+      </div>
+    </div>
+    <div class="form-group {{errorClass 'number'}}">
+      <label class="control-label" for="number">Number</label>
+      <div class="controls">
+        <input name="number" id="number" type="text" value="{{campaign.number}}" placeholder="Number" class="form-control" maxlength="20"/>
+        <span class="help-block">{{errorMessage 'number'}}</span>
+      </div>
+    </div>
+    <div class="form-group {{errorClass 'headline'}}">
+      <label class="control-label" for="headline">Headline</label>
+      <div class="controls">
+        <input name="headline" id="headline" type="text" value="{{campaign.headline}}" placeholder="Headline" class="form-control" maxlength="100"/>
+        <span class="help-block">{{errorMessage 'headline'}}</span>
+      </div>
+    </div>
+    <div class="form-group {{errorClass 'desc'}}">
+        <label class="control-label" for="desc">Description</label>
+        <div class="controls">
+          <textarea name="desc" id="desc" class="form-control" rows="7" value="{{campaign.desc}}"></textarea>
+          <span class="help-block">{{errorMessage 'description'}}</span>
+        </div>
+    </div>
+    <div class="form-group}">
+        <label class="control-label" for="redeemtype">Redeem</label>
+        <div class="controls">
+              <input type="radio" id="rdtypeunique" name="redeemtype" value="unique" {{rdtypeUnique}}>Unique
+              <span></span>
+              <input type="radio" id="rdtypeunverser" name="redeemtype" value="unverser" {{rdtypeUnverser}}>Unverser
+        </div>
+    </div>
+    <br>
+    <div class="form-group">
+        <label class="control-label" for="campaigndate">Campaign Date</label>
+        <div class="controls">
+              <input type="date" name="startdate" value= "{{campaignDate.startDate}}">
+              <input type="time" name="starttime" value= "{{campaignDate.startTime}}">
+              <span>-</span>
+              <input type="date" name="enddate" value= "{{campaignDate.endDate}}">
+              <input type="time" name="endtime" value= "{{campaignDate.endTime}}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="headline">Shopcode</label>
+        <a class="btn addshopcode">add</a>
+        <a class="btn delshopcode">delete</a>
+        <div>
+            {{shopCodes}}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="headline">Campaign Image</label>
+        <div class="controls">
+            {{> imageUpload}}
+        </div>
+
+    </div>
+    <div class="form-group {{errorClass 'url'}}">
+        <label class="control-label" for="headline">Website</label>
+        <div class="controls">
+          <input name="url" id="url" type="url" value="{{campaign.url}}" placeholder="http:// or https://" class="form-control"/>
+          <span class="help-block">{{errorMessage 'url'}}</span>
+        </div>
+    </div>
+
+    <br>
+    <br>
+
+    <input type="submit" value="Update" class="btn btn-primary submit"/>
+    <hr/>
+    <a class="btn btn-danger delete" href="#">Delete campaign</a>
+  </form>
+  {{/if}}
+</template>

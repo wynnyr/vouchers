@@ -1,0 +1,185 @@
+body {
+  background: #eee;
+  color: #666666; 
+  padding : 0px;
+  margin :0px;
+}
+
+.navbar {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.navbar .navbar-inner {
+    border-radius: 0px 0px 3px 3px;
+}
+
+.campaigns {
+  position: relative;
+  height: 100px;
+}
+
+.grid-block, .main, .campaign, .qrcodes li, .qrcodes-form  {
+  background: #ffffff;
+  border-radius: 9px;
+  padding: 10px;
+  margin-bottom: 10px;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+}
+
+#main {
+  position: relative;
+}
+
+.page {
+  position: absolute;
+  top: 0px;
+  width: 100%;
+}
+
+.campaign:before, .campaign:after {
+  content: "";
+  display: table;
+}
+.campaign:after {
+  clear: both;
+}
+
+.campaign .campaign-content {
+  float: left; 
+}
+.campaign .campaign-content h3 {
+  margin: 0;
+  line-height: 1.4;
+  font-size: 18px; 
+}
+.campaign .campaign-content h3 a {
+  display: inline-block;
+  margin-right: 5px; 
+}
+.campaign .campaign-content h3 span {
+  font-weight: normal;
+  font-size: 14px;
+  display: inline-block;
+  color: #aaaaaa;
+ }
+
+.campaign .view {
+  display: block;
+  float: right;
+  margin-top: 7px; 
+}
+
+.tbqrcodelist {
+  border-collapse: collapse;
+  width: 100%;
+
+}
+
+.qrcodes {
+  list-style-type: none;
+  margin: 0; 
+}
+.qrcodes li h4 {
+   font-size: 12px;
+   margin: 0; 
+}
+.qrcodes li h4 .date {
+    font-size: 10px;
+    font-weight: normal;
+}
+.qrcodes li h4 a {
+    font-size: 10px; 
+}
+.qrcodes li p:last-child {
+    margin-bottom: 0; 
+}
+
+
+.tdqrcode {
+  padding: 1px;
+  table-layout: Auto;
+  text-align: center;
+  width:1px;
+}
+
+.tdbody {
+  padding: 10px;
+  vertical-align: top;
+  text-align: left;
+}
+
+.tdredeem-count {
+  padding: 5px;
+  table-layout: fixed;
+  width:90px;
+  vertical-align: center;
+  text-align: center;
+  font-size: large;
+}
+
+.load-more {
+  display: block;
+  border-radius: 3px;
+  background: rgba(0, 0, 0, 0.05);
+  text-align: center;
+  height: 40px;
+  line-height: 40px;
+  margin-bottom: 20px;
+}
+
+.load-more:hover {
+    text-decoration: none;
+    background: rgba(0, 0, 0, 0.1); 
+}
+
+#spinner {
+  height: 300px; 
+}
+
+@-webkit-keyframes fadeOut {
+  0% {opacity: 0;}
+  10% {opacity: 1;}
+  90% {opacity: 1;}
+  100% {opacity: 0;}
+}
+
+@keyframes fadeOut {
+  0% {opacity: 0;}
+  10% {opacity: 1;}
+  90% {opacity: 1;}
+  100% {opacity: 0;}
+}
+
+.errors{
+  position: fixed;
+  z-index: 10000;
+  padding: 10px;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  pointer-events: none;
+}
+.alert {
+          animation: fadeOut 2700ms ease-in 0s 1 forwards;
+  -webkit-animation: fadeOut 2700ms ease-in 0s 1 forwards;
+     -moz-animation: fadeOut 2700ms ease-in 0s 1 forwards;
+  width: 250px;
+  float: right;
+  clear: both;
+  margin-bottom: 5px;
+  pointer-events: auto;
+}
+
+.jumbotron{
+  text-align: center;
+}
+
+.jumbotron h2{
+  font-size: 60px;
+  font-weight: 100;
+}
+
