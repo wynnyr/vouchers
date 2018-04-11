@@ -25,7 +25,12 @@ Template.redeemItem.onCreated(function() {
  });
 
 Template.redeemItem.events({
-   'submit form': function(e,template) {
+  'click .redeemshow': function() {
+      var shopcode = prompt("Add Shopcode","");
+  },
+
+
+  'submit form': function(e,template) {
       e.preventDefault();
 
       var qrcodeProperties = {

@@ -97,27 +97,58 @@ body {
     margin-bottom: 0; 
 }
 
-
-.tdqrcode {
-  padding: 1px;
-  table-layout: Auto;
-  text-align: center;
-  width:1px;
+.qritem-table {
+  display:table;
+}
+.qritem-row {
+  display:table-row;
 }
 
-.tdbody {
-  padding: 10px;
+.qritem-col-redeemcount {
+  display:table-cell;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 50px;
+  width:50px;
+  padding: 0px 10px 0px 20px;
+  text-decoration: none;
+
+}
+.qritem-col-redeemcount a:hover{
+  color: #377BB5;
+  text-decoration: none;
+}
+.qritem-col-redeemcount a:active{
+  color:#377BB5;
+  text-decoration: none;
+}
+
+.qritem-col-code {
+  vertical-align: middle;
+  text-align: center;
+  padding: 5px 15px 0px 10px;
+  width:50px;
+}
+
+.qritem-col-text { 
+  display:table-cell;
   vertical-align: top;
-  text-align: left;
 }
 
-.tdredeem-count {
-  padding: 5px;
-  table-layout: fixed;
-  width:90px;
-  vertical-align: center;
-  text-align: center;
-  font-size: large;
+.qritem-text-pre p {
+  font-size: 0.9em;
+  line-height:1.5em;
+  white-space: pre-line;
+  padding: 5px 15px 15px 1px;
+  margin-right: 10px;
+}
+
+hr { 
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-left: auto;
+  margin-right: auto;
+  border-width: 1px;
 }
 
 .load-more {

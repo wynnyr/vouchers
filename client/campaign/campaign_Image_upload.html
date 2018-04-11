@@ -1,7 +1,10 @@
 <template name="imageUpload">
-   <input name="photoFileName" id="file-input" class="form-control" type="file" accept="image/jpeg">
-   <img id="photopreview_selecet"/>
-   <div>{{{imageSoure campaignImage}}}</div>
+   <div class="form-group {{errorClass 'imageSizeOver'}}">
+      <input name="photoFileName" id="file-input" class="form-control" type="file" accept="image/jpeg">
+      <span class="help-block">{{errorMessage 'imageSizeOver'}}</span>
+      <img id="photopreview_selecet"/>
+      <div>{{{imageSoure campaignImage}}}</div>
+   </div>
   
 </template>
 

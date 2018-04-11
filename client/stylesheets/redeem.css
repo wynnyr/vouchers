@@ -1,28 +1,75 @@
-.redeem-content h1.campaign-title {
-   font-size: 30px;
+.redeem-content h1 {
+   font-size: 50px;
    font-weight: normal;
    padding: 10px 20px 5px 20px;
    color: #444;
    text-align: center;
 }
 
-.redeem-content div.campaign-title-body {
+.redeem-content2 {
+   font-size: 25px;
+   font-weight: normal;
    color: #777;
    text-align: center;
-   padding: 0 3px 5px 3px;
-   font-size: .8em;
+}
+.redeem-content3 {
+   font-size: 20px;
+   font-weight: normal;
+   color: #777;
+   text-align: center;
 }
 
-.article {
+.redeem-image{
+   padding: 5px 30px 10px 30px;
+}
+
+.redeem-headline {
    margin-top: 10px;
-   background: #fff;
+   color:#ffffff;
+   background:#11b3ef;
    text-align: left;
-   padding-bottom: 10px;
+   padding: 5px 10px 10px 10px;
+
 }
 
-.redeembody pre {
+.redeembody-compaign{
    display: block;
-   font-family: monospace;
-   white-space:pre-line;
-   margin: 1em 0;
+   white-space:pre;
+   height: 250px;
+   font-size: 20px;
+}
+.redeembody-qr{
+   display: block;
+   white-space:pre;
+   height: 200px;
+   font-size: 18px;
+}
+
+.redeem-btn {
+   display: block;
+   border-radius: 3px;
+   color: #ffffff;
+   background: rgba(17, 179, 240, 1);
+   font-size: 30px;
+   text-align: center;
+   height: 80px;
+   line-height: 80px;
+   margin-bottom: 50px; 
+}
+
+
+.redeem-btn a{
+   text-decoration: none;
+}
+
+.redeem-btn a:link, .redeem-btn a:visited {
+   color: #EEEEEE;
+}
+
+.redeem-btn a:hover{
+   color:#FFFFFF;  
+}
+
+ .redeem-btn a:active{
+   color:#FFFFFF;
 }

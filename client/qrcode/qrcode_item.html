@@ -1,23 +1,22 @@
 <template name="qrcodeItem">
-      <li>
-            <table class = "tdqrcodelist" style="width:100%">
-            <tr>
-                  <td class = "tdredeem-count">
-                        <span><a href="{{pathFor 'redeemItem'}}/{{code}}">{{redeem}}</a></span>    
-                  </td>
-                  <td class = "tdqrcode">
-                        <span><a href="{{pathFor 'campaignQREdit'}}">{{> QRCode text = redeemcode size="64px"}}</a></span>
-                        <span>{{code}}</span>     
-                  </td>
-                  <td class = "tdbody">
-                        <pre class = "itemlist">{{body}}</pre>
-                  </td>
-            </tr>
-            </table>   
-            <hr> 
-            <h4>
-                  <span class="author">{{author}}</span>
-                  <span class="date">on {{submittedText}}</span>
-            </h4>
-      </li>
+<li>
+      <div class="qritem-table">
+            <div class="qritem-row">
+                  <div class="qritem-col-redeemcount">
+                        <span><a href="{{pathFor 'redeemItem'}}/{{code}}">{{redeem}}</a></span>
+                  </div>
+                  <div class="qritem-col-code" style="display:table-cell">
+                        <div><a href="{{pathFor 'campaignQREdit'}}">{{> QRCode text = redeemcode size="64px"}}</a></div>
+                        <div>{{code}}</div> 
+                  </div>
+                  <div class="qritem-col-text" >
+                        <div class=qritem-text-pre><p>{{body}}</p></div>
+                  </div>
+            </div>
+      </div>
+      <h4>
+            <span class="author">{{author}}</span>
+            <span class="date">on {{submittedText}}</span>
+      </h4>
+</li>
 </template>
