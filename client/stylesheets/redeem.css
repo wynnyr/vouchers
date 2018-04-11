@@ -34,14 +34,12 @@
 
 .redeembody-compaign{
    display: block;
-   white-space:pre;
-   height: 250px;
+   white-space:pre-line;
    font-size: 20px;
 }
 .redeembody-qr{
    display: block;
-   white-space:pre;
-   height: 200px;
+   white-space:pre-line;
    font-size: 18px;
 }
 
@@ -72,4 +70,23 @@
 
  .redeem-btn a:active{
    color:#FFFFFF;
+}
+
+.redeemed-error h1 {
+  background:#f44;
+  color:#fff;
+  font-size: 50px;
+  text-align: center;
+  padding: 40px 20px;
+}
+.redeemed-error div {
+  text-align: center;
+  font-size: 20px;
+}
+
+.redeemed-ok h1 {
+  background:#1a1;
+  color:#fff;
+  text-align: center;
+  padding: 40px 20px;
 }

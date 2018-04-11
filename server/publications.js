@@ -99,7 +99,6 @@ Meteor.publishComposite('detailQrcodesWithImageFromQR', function(qr) {
                 author:false,
                 qrcodesCount:false,
                 redeemed:false,
-                redeemtype:false,
                 shopcodes:false,
                 submitted:false,
               }
@@ -144,6 +143,7 @@ Meteor.publish('singleRedeems', function(_id) {
  check(_id, String)
  return Redeems.find(_id);
 });
+
 
 
 

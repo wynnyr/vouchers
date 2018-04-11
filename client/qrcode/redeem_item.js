@@ -21,8 +21,14 @@ Template.redeemItem.onCreated(function() {
 		var imageUrl = urlCreator.createObjectURL( blob );
 
     return '<img id="photopreview" src = " '+imageUrl+ ' " style = "display:block; width:100%;height:Auto;" />'
-	},	
- });
+  },
+  canRedeem: function() {
+    return ((this.campaign.redeemtype === 'unique' && this.qrcode.redeem > 0) || this.expired == 1)
+  },
+  laseRedeem: function() {
+    return moment(this.qrcode.redeemed).format("LL");;
+  }
+});
 
 Template.redeemItem.events({
   'click .redeemshow': function() {
@@ -67,7 +73,7 @@ Template.redeemItem.events({
         }
 
         if (result.OK){
-          //Router.go('campaignPage'); 
+          //Router.go('redeemOK'); 
           return;
         }
     });
