@@ -1,4 +1,5 @@
 <template name="campaignQRInsert"> 
+  {{log "Look at me!"}}
   {{#if ownCampaign}}
     <div class="campaign-page page"> 
       {{> campaignItem}} 
@@ -6,5 +7,7 @@
           {{>qrcodeCreate}}
         </ul>
     </div> 
+  {{else}}
+    {{>accessDenied}}
   {{/if}}
 </template>

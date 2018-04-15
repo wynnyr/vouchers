@@ -1,5 +1,11 @@
 <template name="redeemItem">
-{{#if canRedeem}}
+{{#if successRedeem}}
+      <div class = "redeemed-success">
+            <h1>The coupon was redeemed.</h1>
+            <div>{{laseRedeem}}</div>
+      </div>
+
+{{else if isRedeemed}}
       <div class = "redeemed-error">
             <h1>This voucher has been already redeemed.</h1>
             <div>{{laseRedeem}}</div>

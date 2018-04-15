@@ -1,4 +1,4 @@
-Meteor.publish('campaigns', function(options) {
+Meteor.publish('campaignsAll', function(options) {
   check(options, {
     sort: Object,
     limit: Number
@@ -6,20 +6,27 @@ Meteor.publish('campaigns', function(options) {
   return Campaigns.find({}, options);
 });
 
-Meteor.publish('singleCampaign', function(_id) {
-  check(_id, String)
-  return Campaigns.find(_id);
+Meteor.publish('campaigns', function(userId,options) {
+  check(userId, String)
+  check(options, {
+    sort: Object,
+    limit: Number
+  });
+  return Campaigns.find({userId: userId}, options);
 });
 
-Meteor.publish('allCampaigns', function() {
- return Campaigns.find();
+Meteor.publish('singleCampaign', function(_id, userId) {
+  check(_id, String);
+  check(userId, String);
+  return Campaigns.find({_id: _id, userId: userId});
 });
 
-Meteor.publishComposite('singleCampaignWithImage', function(_id) {
+Meteor.publishComposite('singleCampaignWithImage', function(_id,userId) {
  check(_id, String)
+ check(userId, String);
  return {
    find() {
-     return Campaigns.find(_id)
+     return Campaigns.find({_id: _id, userId: userId})
    },
    children: [
      {
@@ -31,18 +38,20 @@ Meteor.publishComposite('singleCampaignWithImage', function(_id) {
  }
 });
 
-Meteor.publish('qrcodes', function(campaignId, options) {
+Meteor.publish('qrcodes', function(campaignId, userId, options) {
  check(campaignId, String);
+ check(userId, String)
  check(options, {
    sort: Object,
    limit: Number
  });
- return Qrcodes.find({campaignId: campaignId}, options);
+ return Qrcodes.find({campaignId: campaignId, userId: userId}, options);
 });
 
-Meteor.publish('singleQrcodes', function(_id) {
+Meteor.publish('singleQrcodes', function(_id,userId) {
  check(_id, String);
- return Qrcodes.find(_id);
+ check(userId, String)
+ return Qrcodes.find({_id: _id, userId: userId});
 });
 
 Meteor.publishComposite('detailQrcodesFromQR', function(qr) {
@@ -61,11 +70,12 @@ Meteor.publishComposite('detailQrcodesFromQR', function(qr) {
  }
 });
 
-Meteor.publishComposite('detailQrcodesFromID', function(_id) {
+Meteor.publishComposite('detailQrcodesFromID', function(_id,userId) {
  check(_id, String)
+ check(userId, String)
  return {
    find() {
-     return Qrcodes.find(_id)
+     return Qrcodes.find({_id: _id, userId: userId})
    },
    children: [
      {
@@ -96,7 +106,7 @@ Meteor.publishComposite('detailQrcodesWithImageFromQR', function(qr) {
             {
               fields:
               {
-                author:false,
+                author:false, 
                 qrcodesCount:false,
                 redeemed:false,
                 shopcodes:false,

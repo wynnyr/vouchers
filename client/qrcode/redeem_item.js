@@ -1,5 +1,6 @@
 Template.redeemItem.onCreated(function() {
    Session.set('redeemItemError', {});
+   Session.set('redeemItemSuccess', 0);
  });
 
  Template.redeemItem.helpers({
@@ -22,10 +23,24 @@ Template.redeemItem.onCreated(function() {
 
     return '<img id="photopreview" src = " '+imageUrl+ ' " style = "display:block; width:100%;height:Auto;" />'
   },
-  canRedeem: function() {
-    return ((this.campaign.redeemtype === 'unique' && this.qrcode.redeem > 0) || this.expired == 1)
+  successRedeem: function() {
+    return Session.get('redeemItemSuccess');
   },
+  isRedeemed: function() {
+    if(!isQRcode(this.campaign,this.qrcode)){
+      return 1; 
+    }
+
+    if(((this.campaign.redeemtype === 'unique' && this.qrcode.redeem > 0) || this.expired == 1)){
+      return 1;
+    }
+    return 0;
+  },
+
   laseRedeem: function() {
+    if(!isQRcode(this.campaign,this.qrcode)){
+      return ""; 
+    }
     return moment(this.qrcode.redeemed).format("LL");;
   }
 });
@@ -72,10 +87,12 @@ Template.redeemItem.events({
           return throwError('Invalid merchant');
         }
 
-        if (result.OK){
-          //Router.go('redeemOK'); 
+        if (result.qrcodeRedeemSuccess){
+          Session.set('redeemItemSuccess', '1');
           return;
         }
     });
   }
 });
+
+

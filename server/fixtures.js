@@ -25,7 +25,7 @@ if (Campaigns.find().count() === 0) {
             userId: fufu._id,
             author: fufu.username,
             redeemtype:'unique',
-            qrcodesCount: 21,
+            qrcodesCount: 11,
             redeemed: 1
       }); 
 
@@ -47,7 +47,7 @@ if (Campaigns.find().count() === 0) {
             date : new Date(now + 2 * 24 * 3600 * 1000),
       });
 
-      for (var i = 0; i < 20; i++) {
+      for (var i = 0; i < 10; i++) {
             Qrcodes.insert({
                   campaignId: bbq,
                   userId: fufu._id,
@@ -73,11 +73,11 @@ if (Campaigns.find().count() === 0) {
          userId: nook._id,
          author: nook.username,
          redeemtype:'unique',
-         qrcodesCount: 20,
+         qrcodesCount: 5,
          redeemed: 0
       }); 
 
-      for (var i = 0; i < 10; i++) {
+      for (var i = 0; i < 5; i++) {
             Qrcodes.insert({
                   campaignId: viva,
                   userId: nook._id,
@@ -103,7 +103,7 @@ if (Campaigns.find().count() === 0) {
             userId: fufu._id,
             author: fufu.username,
             redeemtype:'unverser',
-            qrcodesCount: 0,
+            qrcodesCount: 1,
             redeemed: 0
          }); 
 
@@ -118,11 +118,12 @@ if (Campaigns.find().count() === 0) {
       });
 
       for (var i = 0; i < 5; i++) {
-            Campaigns.insert({
-                  title: 'Test Campaigns #' + i,
-                  number:'JSP001',
-                  headline: 'Jinton nude Liquid Toothpaste',
-                  desc: 'แสดงคูปองนี้เพื่อรับฟรี Gift Set จาก Jinton ได้ที่บูธในงาน',
+            var number = 'Testfufu' + i;
+            var CampaignsID = Campaigns.insert({
+                  title: 'Test Campaigns fufu#' + i,
+                  number: number,
+                  headline: 'headline' + number,
+                  desc: 'desc'+ number,
                   startdate: new Date(now - 2 * 24 * 3600 * 1000),
                   enddate: new Date(now + 10 * 24 * 3600 * 1000),
                   content:'',
@@ -132,9 +133,56 @@ if (Campaigns.find().count() === 0) {
                   userId: fufu._id,
                   author: fufu.username,
                   redeemtype:'unverser',
-                  qrcodesCount: 0,
+                  qrcodesCount: 2,
                   redeemed: 0
             });
+
+            for (var j = 0; j < 2; j++) {
+                  Qrcodes.insert({
+                        campaignId: CampaignsID,
+                        userId: fufu._id,
+                        author: fufu.username,
+                        submitted: new Date((now - 2 * 24 * 3600 * 1000)+j+1),
+                        body: 'DDDDDDDDDD RRRRRRRRRR RRRRRRRRRRR RRRRRRRRR' + j,
+                        code: number+'QR'+ j,
+                        redeem: 0
+                  });
+            } 
+
+
       }
 
+
+      for (var i = 0; i < 5; i++) {
+            var number = 'Testnook' + i;
+            var CampaignsID = Campaigns.insert({
+                  title: 'Test Campaigns nook#' + i,
+                  number: number,
+                  headline: 'headline' + number,
+                  desc: 'desc'+number,
+                  startdate: new Date(now - 2 * 24 * 3600 * 1000),
+                  enddate: new Date(now + 10 * 24 * 3600 * 1000),
+                  content:'',
+                  shopcodes:['4361'],
+                  url: 'http://google.com/?q=test-' + i,
+                  submitted: new Date(now - (i+4) * 24 * 3600 * 1000),
+                  userId: nook._id,
+                  author: nook.username,
+                  redeemtype:'unverser',
+                  qrcodesCount: 2,
+                  redeemed: 0
+            });
+
+            for (var j = 0; j < 2; j++) {
+                  Qrcodes.insert({
+                        campaignId: CampaignsID,
+                        userId: nook._id,
+                        author: nook.username,
+                        submitted: new Date((now - 2 * 24 * 3600 * 1000)+j+1),
+                        body: 'DDDDDDDDDD RRRRRRRRRR RRRRRRRRRRR RRRRRRRRR' + j,
+                        code: number+'QR'+ j,
+                        redeem: 0
+                  });
+            } 
+      }
 }
