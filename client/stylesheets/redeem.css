@@ -1,5 +1,5 @@
 .redeem-content h1 {
-   font-size: 50px;
+   font-size: 20px;
    font-weight: normal;
    padding: 10px 20px 5px 20px;
    color: #444;
@@ -7,40 +7,41 @@
 }
 
 .redeem-content2 {
-   font-size: 25px;
+   font-size: 15px;
    font-weight: normal;
    color: #777;
    text-align: center;
 }
 .redeem-content3 {
-   font-size: 20px;
+   font-size: 10px;
    font-weight: normal;
    color: #777;
    text-align: center;
 }
 
 .redeem-image{
-   padding: 5px 30px 10px 30px;
+   padding: 5px 10px 10px 10px;
 }
 
-.redeem-headline {
-   margin-top: 10px;
+.redeem-headline h2{
+   font-size: 20px;
+   margin-top: 5px;
    color:#ffffff;
    background:#11b3ef;
    text-align: left;
-   padding: 5px 10px 10px 10px;
+   padding: 10px 10px 10px 10px;
 
 }
 
 .redeembody-compaign{
    display: block;
    white-space:pre-line;
-   font-size: 20px;
+   font-size: 16px;
 }
 .redeembody-qr{
    display: block;
    white-space:pre-line;
-   font-size: 18px;
+   font-size: 14px;
 }
 
 .redeem-btn {
@@ -48,52 +49,90 @@
    border-radius: 3px;
    color: #ffffff;
    background: rgba(17, 179, 240, 1);
-   font-size: 30px;
+   font-size: 20px;
    text-align: center;
-   height: 80px;
-   line-height: 80px;
-   margin-bottom: 50px; 
+   height: 50px;
+   line-height: 50px;
+   margin-bottom: 10px; 
 }
 
+.redeem-btn2 {
+  display: block;
+  border-radius: 3px;
+  color: #ffffff;
+  background: rgb(200, 200, 200);
+  font-size: 18px;
+  text-align: center;
+  height: 40px;
+  line-height: 40px;
+  margin-bottom: 20px; 
+}
 
-.redeem-btn a{
+.redeemshow a:hover{
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.redeemshow a:active{
+  color:#ffffff;
+  text-decoration: none;
+}
+
+.redeemshow a{
+  color:#ffffff;
    text-decoration: none;
 }
 
-.redeem-btn a:link, .redeem-btn a:visited {
-   color: #EEEEEE;
+.redeemhide a:hover{
+  color: #ffffff;
+  text-decoration: none;
 }
 
-.redeem-btn a:hover{
-   color:#FFFFFF;  
+.redeemhide a:active{
+  color:#ffffff;
+  text-decoration: none;
 }
 
- .redeem-btn a:active{
-   color:#FFFFFF;
+.redeemhide a{
+  color:#ffffff;
+   text-decoration: none;
 }
 
 .redeemed-error h1 {
   background:#f44;
   color:#fff;
-  font-size: 50px;
+  font-size: 18px;
   text-align: center;
   padding: 40px 20px;
 }
 .redeemed-error div {
   text-align: center;
-  font-size: 20px;
+  font-size: 12px;
 }
 
 .redeemed-success h1 {
   background:#1a1;
   color:#fff;
+  font-size: 25px;
   text-align: center;
   padding: 40px 20px;
 }
 
 .redeemed-success div {
   text-align: center;
-  font-size: 20px;
+  font-size: 12px;
+}
+
+.redeemed-failure h1 {
+  background:#f44;
+  color:#fff;
+  font-size: 30px;
+  text-align: center;
+  padding: 40px 20px;
+}
+.redeemed-failure div {
+  text-align: center;
+  font-size: 12px;
 }
 
 .redeemContent{
@@ -108,6 +147,7 @@
   -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
   -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
-  
+
   display: none;
 }
+

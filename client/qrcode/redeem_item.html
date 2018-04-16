@@ -1,10 +1,18 @@
 <template name="redeemItem">
-{{#if successRedeem}}
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+{{#unless ready}}
+      <br><br><br>
+      {{> spinner}}
+{{else if successRedeem}}
       <div class = "redeemed-success">
             <h1>The coupon was redeemed.</h1>
             <div>{{laseRedeem}}</div>
       </div>
-
+{{else if failureRedeem}}
+      <div class = "redeemed-failure">
+            <h1>Invalid merchant.</h1>
+            <div>{{laseRedeem}}</div>
+      </div>
 {{else if isRedeemed}}
       <div class = "redeemed-error">
             <h1>This voucher has been already redeemed.</h1>
@@ -16,39 +24,85 @@
             <div class= "redeem-content2">{{campaign.number}}</div>
             <div class= "redeem-content3">Expiration Date: {{dateend campaign.enddate}}</div>
             <br>
-            <div class ="redeem-image">{{{imageSoure campaignImage}}}</div>
+            <div class ="redeem-image img-responsive">{{{imageSoure campaignImage}}}</div>
 
             <div class="redeem-headline">
                   <h2>
                         {{campaign.headline}}
                   </h2>
             </div>
-            <br>
       </div>
-            <div class= "redeemContent">
-                  <div class="web-container well">
-                        <p class = "redeembody-compaign">{{campaign.desc}}</p>
-                        <p class = "redeembody-qr">{{qrcode.body}}</p>
-                  </div>
+      <!--
+      <div class= "redeemContent">
+            <div class="web-container well">
+                  <p class = "redeembody-compaign">{{campaign.desc}}</p>
+                  <p class = "redeembody-qr">{{qrcode.body}}</p>
+            </div>
 
-                  <div class="redeem-btn">
-                        <a class= "redeemshow" href="{{qrcode.code}}">Redeem</a>
-                  </div>
+            <div class="redeemshow">
+                  <a class= "redeem-btn" href="{{qrcode.code}}">Redeem</a>
             </div>
-            <div class= "redeemForm">
-                        <form>
-                        <div class="form-group {{errorClass 'shopcode'}}">
-                              <label class="control-label" for="number">Shop Code</label>
-                              <div class="controls">
-                                    <input class="form-control" name="shopcode" id="shopcode" type="text" value="{{shopcode}}" placeholder="shop code" />
-                                    <span class="help-block">{{errorMessage 'shopcode'}}</span>
-                              </div>
+      </div>
+      <div class= "redeemForm">
+            <form>
+                  <div class="form-group form-group-lg {{errorClass 'shopcode'}}">
+                        <label class="control-label" for="number">Shop Code</label>
+                        <div class="controls">
+                              <input class="form-control" name="shopcode" id="shopcode" type="number" value="{{shopcode}}" placeholder="shop code" />
+                              <span class="help-block">{{errorMessage 'shopcode'}}</span>
                         </div>
-                        <br>
-                        <input class="redeem-btn btn-block" type="submit" value="submit"/>
-                  </form>
+                  </div>
+                  <br>
+                        
+                  <div class="redeemhide">
+                        <input class="redeem-btn btn-block" type="submit" value="Submit"/>
+                        <input class="redeem-btn2 btn-block" type="button" value="Cancel"/>
+                  </div>
+            </form>
+      </div>
+      -->
+<!-- Large modal -->
+      <div>
+            <div class="web-container well">
+                  <p class = "redeembody-compaign">{{campaign.desc}}</p>
+                  <p class = "redeembody-qr">{{qrcode.body}}</p>
             </div>
+            <div class="redeemshow">   
+                  <a class= "redeem-btn" data-toggle="modal" data-target="#shopcodemodel">Redeem</a>  
+            </div>
+
+            <div class="modal" id="shopcodemodel" tabindex="-1" role="dialog">
+                  <div class="modal-dialog" role="document">
+ 
+                             <form class="modal-content">      
+                                    <div class="modal-header">
+                                          <h4 class="modal-title">Do you really redeem the voucher now?</h4>
+                                    </div>
+                                    <div class="modal-body form-group form-group-lg {{errorClass 'shopcode'}}">
+                                          <label class="control-label" for="number">Shop Code</label>
+                                          <div class="controls">
+                                                <input class="form-control" name="shopcode" id="shopcode" type="number" value="{{shopcode}}" placeholder="shop code" />
+                                                <span class="help-block">{{errorMessage 'shopcode'}}</span>
+                                          </div>
+
+                                          <div>
+                                          <p class="text-warning">*The voucher is valid per person only once and can be redeemed only with an employee.</p>
+                                          </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                          <button type="submit" class="btn btn-primary">Submit</button>
+                                          
+                                    </div>
+                              </form>
+                  </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+      </div>
+
+
+
       
-{{/if}}
+{{/unless}}
+
 </template>
 

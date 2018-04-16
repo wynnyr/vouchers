@@ -1,5 +1,11 @@
+import { Random } from 'meteor/random'
+
+var firstLoad = 0;
+
 Template.qrcodeEdit.onCreated(function() {
    Session.set('qrcodeEditErrors', {});
+   Session.set('qrcodeCodeRandom','');
+   firstLoad = 0;
 });
  
 Template.qrcodeEdit.helpers({
@@ -14,9 +20,21 @@ Template.qrcodeEdit.helpers({
   errorClass: function (field) {
      return !!Session.get('qrcodeEditErrors')[field] ? 'has-error' : '';
   },
+  codeRandom: function() {
+    if(firstLoad==0){
+      firstLoad=1;
+      Session.set("qrcodeCodeRandom",this.code);
+    }
+    return Session.get('qrcodeCodeRandom');
+  }
 });
 
 Template.qrcodeEdit.events({
+
+  'click .randoncode': function() {
+    Session.set('qrcodeCodeRandom',Random.id(6));
+  },
+  
   'submit form': function(e) {
     e.preventDefault();
 

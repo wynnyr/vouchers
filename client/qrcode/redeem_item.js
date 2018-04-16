@@ -1,6 +1,7 @@
 Template.redeemItem.onCreated(function() {
    Session.set('redeemItemError', {});
    Session.set('redeemItemSuccess', 0);
+   Session.set('redeemItemFailure', 0);
  });
 
  Template.redeemItem.helpers({
@@ -26,6 +27,11 @@ Template.redeemItem.onCreated(function() {
   successRedeem: function() {
     return Session.get('redeemItemSuccess');
   },
+
+  failureRedeem: function() {
+    return Session.get('redeemItemFailure');
+  },
+
   isRedeemed: function() {
     if(!isQRcode(this.campaign,this.qrcode)){
       return 1; 
@@ -47,14 +53,23 @@ Template.redeemItem.onCreated(function() {
 });
 
 Template.redeemItem.events({
+  /*
   'click .redeemshow': function() {
     $(".redeemContent").css('display', 'none');
     $(".redeemForm").css('display', 'block');
-},
+  },
+
+  'click .redeemhide': function() {
+      $(".redeemContent").css('display', 'block');
+      $(".redeemForm").css('display', 'none');
+  },
+*/
 
 
   'submit form': function(e,template) {
       e.preventDefault();
+
+      
 
       var qrcodeProperties = {
         qrcodeId:   template.data.qrcode._id,
@@ -65,28 +80,36 @@ Template.redeemItem.events({
       var errors = validateQrcode(qrcodeProperties);
       if (errors.shopcode)
           return Session.set('redeemItemError', errors);
-          
+
+      $('#shopcodemodel').modal('hide')    
+      
       Meteor.call('qrcodeRedeem', qrcodeProperties, function(error, result) {
 
         //display the error to the user and abort
         if (error){
-          return throwError(error.reason);
+          //return throwError(error.reason);
+          return;
         }
 
         if (result.qrcodeNotFound){
-          return throwError('This voucher not found.');
+          //return throwError('This voucher not found.');
+          return;
         }
         
         if (result.qrcodeRedeemed){
-          return throwError('This voucher has been already redeemed.');
+          //return throwError('This voucher has been already redeemed.');
+          return;
         }
 
         if (result.qrcodeExpired){
-          return throwError('This voucher Expired.');
+          //return throwError('This voucher Expired.');
+          return;
         }
 
         if (result.qrcodeShopCodeFail){
-          return throwError('Invalid merchant');
+          Session.set('redeemItemFailure', '1');
+          //return throwError('Invalid merchant');
+          return;
         }
 
         if (result.qrcodeRedeemSuccess){

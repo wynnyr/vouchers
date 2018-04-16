@@ -2,8 +2,11 @@
     <form name="qrcodes" class="qrcodes-form form">
         <div class="form-group {{errorClass 'code'}}">
             <label class="control-label" for="code">Code</label>
-            <div class="controls">
-                <input name="code" id="code" type="text" value="" placeholder="QR Code" class="form-control"/>
+            <div class="controls input-group">
+                <div class="input-group-addon">
+                    <div class="glyphicon glyphicon-refresh randoncode"></div>
+                </div>
+                <input name="code" id="code" type="text" value={{codeRandom}} placeholder="QR Code" class="form-control">
                 <span class="help-block">{{errorMessage 'code'}}</span>
             </div>
         </div>
