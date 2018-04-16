@@ -20,15 +20,15 @@ Template.imageUpload.events({
 		var imageUploadId = Session.get("imageUploadId");
 		var pImageUpload = this.campaignImage;
 		if(pImageUpload || imageUploadId){
-			if(!imageUploadId)
+			if(!imageUploadId){
 				imageUploadId = pImageUpload._id
+			}
 
 			//console.log('imageId1->'+ imageUploadId)
 
 			var reader = new FileReader();
 			reader.onload = function(event){  
 				var buffer = new Uint8Array(reader.result);
-				//console.log("file Size="+buffer.length);
 
 				if (buffer.length >1000000){
 					Session.set("imageSizeOver",{'imageSizeOver' : 'Image is too big. Max. 1 MB'});
@@ -66,7 +66,6 @@ Template.imageUpload.events({
 				
 					Meteor.call('addCampaignImageFile', buffer, function(error, result) {
 						Session.set("imageUploadId", result._id);
-						//console.log('Add imageId to Session->'+result._id)
 					});
 				}
 			}
@@ -78,8 +77,11 @@ Template.imageUpload.events({
 });
 
 Template.imageUpload.helpers({
+	
 	imageSoure : function(pImage) {
-		if (pImage){
+		var imageUploadId = Session.get("imageUploadId");
+
+		if (pImage && !imageUploadId){
 			//console.log('imageId_helpers->' + pImage._id)
 			var blob = new Blob( [ pImage.data ], { type: "image/jpeg" } );
 			var urlCreator = window.URL || window.webkitURL;
@@ -87,7 +89,7 @@ Template.imageUpload.helpers({
 			return '<img id="photopreview" src = " ' +imageUrl+ ' " style = "display:block; width:400px;height:Auto;" />'
 		}
 		else{
-			return  '<img id="photopreview"/>' ;
+			return '<img id="photopreview"/>' ;
 		}
 	},	
 

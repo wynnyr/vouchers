@@ -30,11 +30,12 @@ Template.redeemItem.onCreated(function() {
     if(!isQRcode(this.campaign,this.qrcode)){
       return 1; 
     }
-
-    if(((this.campaign.redeemtype === 'unique' && this.qrcode.redeem > 0) || this.expired == 1)){
+    else if(((this.campaign.redeemtype === 'unique' && this.qrcode.redeem > 0) || this.expired == 1)){
       return 1;
     }
-    return 0;
+    else{
+      return 0;
+    }
   },
 
   laseRedeem: function() {
@@ -47,8 +48,9 @@ Template.redeemItem.onCreated(function() {
 
 Template.redeemItem.events({
   'click .redeemshow': function() {
-      var shopcode = prompt("Add Shopcode","");
-  },
+    $(".redeemContent").css('display', 'none');
+    $(".redeemForm").css('display', 'block');
+},
 
 
   'submit form': function(e,template) {

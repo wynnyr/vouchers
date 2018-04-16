@@ -23,29 +23,32 @@
                         {{campaign.headline}}
                   </h2>
             </div>
-
-            <div class="web-container">
-                  <p class = "redeembody-compaign">{{campaign.desc}}</p>
-                  <p class = "redeembody-qr">{{qrcode.body}}</p>
-            </div>
-
-            <div class="redeem-btn">
-                  <a class= "redeemshow" href="{{qrcode.code}}">Redeem</a>
-            </div>
+            <br>
       </div>
+            <div class= "redeemContent">
+                  <div class="web-container well">
+                        <p class = "redeembody-compaign">{{campaign.desc}}</p>
+                        <p class = "redeembody-qr">{{qrcode.body}}</p>
+                  </div>
 
-      <div>
-            <form>
-                  <div class="form-group {{errorClass 'shopcode'}}">
-                  <label class="control-label" for="number">Shop Code</label>
-                  <div class="controls">
-                        <input class="form-control" name="shopcode" id="shopcode" type="text" value="{{shopcode}}" placeholder="shop code" />
-                        <span class="help-block">{{errorMessage 'shopcode'}}</span>
+                  <div class="redeem-btn">
+                        <a class= "redeemshow" href="{{qrcode.code}}">Redeem</a>
                   </div>
             </div>
-            <input type="submit" value="submit"/>
-            </form>
-      </div>
-      {{/if}}
+            <div class= "redeemForm">
+                        <form>
+                        <div class="form-group {{errorClass 'shopcode'}}">
+                              <label class="control-label" for="number">Shop Code</label>
+                              <div class="controls">
+                                    <input class="form-control" name="shopcode" id="shopcode" type="text" value="{{shopcode}}" placeholder="shop code" />
+                                    <span class="help-block">{{errorMessage 'shopcode'}}</span>
+                              </div>
+                        </div>
+                        <br>
+                        <input class="redeem-btn btn-block" type="submit" value="submit"/>
+                  </form>
+            </div>
+      
+{{/if}}
 </template>
 

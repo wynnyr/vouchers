@@ -1,10 +1,17 @@
-<template name="campaignQREdit"> 
+<template name="campaignQREdit">
       {{#if ownCampaign campaign}}
-            <div class="campaign-page page">
-                  {{> campaignItem campaign}} 
-                  <ul class="qrcodes">
-                        {{>qrcodeEdit qrcode}}
-                  </ul>
-            </div>
+      <div class="campaign-page page">
+            {{> campaignItem campaign}}
+            <ul class="qrcodes">
+                  {{>qrcodeEdit qrcode}}
+            </ul>
+      </div>
+      {{else}} 
+            {{#unless ready}} 
+                  {{> spinner}}
+            {{else}}
+                   {{> notFound}}
+            {{/unless}}
       {{/if}}
+
 </template>

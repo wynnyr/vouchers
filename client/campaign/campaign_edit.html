@@ -1,7 +1,7 @@
 <template name="campaignEdit">
   {{#if ownCampaign campaign}}
   <form class="main form page">
-    <h2>Campaign Information</h2>
+    <h2>Campaign Information - edit</h2>
     <br>
     <div class="form-group {{errorClass 'title'}}">
       <label class="control-label" for="title">Title</label>
@@ -34,9 +34,12 @@
     <div class="form-group}">
         <label class="control-label" for="redeemtype">Redeem</label>
         <div class="controls">
+            <label class="radio-inline">
               <input type="radio" id="rdtypeunique" name="redeemtype" value="unique" {{rdtypeUnique}}>Unique
-              <span></span>
+            </label>
+            <label class="radio-inline">
               <input type="radio" id="rdtypeunverser" name="redeemtype" value="unverser" {{rdtypeUnverser}}>Unverser
+            </label>
         </div>
     </div>
     <br>
@@ -81,6 +84,10 @@
     <a class="btn btn-danger delete" href="#">Delete campaign</a>
   </form>
   {{else}}
-    {{>accessDenied}}
+    {{#unless ready}}
+      {{> spinner}}
+    {{else}} 
+      {{> notFound}}
+    {{/unless}}
   {{/if}}
 </template>
