@@ -11,9 +11,11 @@ Template.redeemItem.onCreated(function() {
   errorClass: function (field) {
     return !!Session.get('redeemItemError')[field] ? 'has-error' : '';
   },
+
   dateend : function(date) {
     return moment(date).format("LL");
   },
+
   imageSoure : function(ptrImage) {
 		if (!ptrImage)
 			return  '<img id="photopreview"/>' ;
@@ -24,52 +26,35 @@ Template.redeemItem.onCreated(function() {
 
     return '<img id="photopreview" src = " '+imageUrl+ ' " style = "display:block; width:100%;height:Auto;" />'
   },
-  successRedeem: function() {
-    return Session.get('redeemItemSuccess');
-  },
 
-  failureRedeem: function() {
-    return Session.get('redeemItemFailure');
-  },
-
-  nonExisting: function() {
-    if(!isQRcode(this.campaign,this.qrcode)){
-      return 1; 
-    }
+  redeemStatus: function() {
+    if(!isQRcode(this.campaign,this.qrcode))
+      return '<div class = "redeemed-failure"> <h1>Non-Existing Voucher.</h1><div>The Voucher with the code does not exist.</div>'
     else{
-      return 0;
-    }
-  },
+      console.log('expired-->'+this.expired);
+      var lastRedeem  = moment(this.qrcode.redeemed).format("LL")
+      var endCampaign = moment(this.campaign.enddate).format("LL")
 
-  isExpired: function() {
-    if(!isQRcode(this.campaign,this.qrcode)){
-      return 1; 
+      if (Session.get('redeemItemSuccess')){
+        console.log('success');
+        return '<div class = "redeemed-success"> <h1>The coupon was redeemed.</h1><div>'+ lastRedeem +'</div>'
+      }
+      else if (Session.get('redeemItemFailure')){
+        console.log('Invalid');
+        return '<div class = "redeemed-failure"> <h1>Invalid merchant.</h1>'
+      }
+      else if(this.expired){
+        console.log('expired');
+        return '<div class = "redeemed-failure"> <h1>Voucher expired.</h1><div>'+ endCampaign +'</div>'
+      }
+      else if((this.campaign.redeemtype === 'unique') && (this.qrcode.redeem > 0)){
+        console.log('redeemed');
+        return '<div class = "redeemed-failure"> <h1>This voucher has been already redeemed.</h1><div>'+ lastRedeem +'</div>'
+      }
+      else{
+        return 0
+      }
     }
-    else if(this.expired === 1){
-      return 1;
-    }
-    else{
-      return 0;
-    }
-  },
-
-  isRedeemed: function() {
-    if(!isQRcode(this.campaign,this.qrcode)){
-      return 1; 
-    }
-    else if(((this.campaign.redeemtype === 'unique' && this.qrcode.redeem > 0) || this.expired == 1)){
-      return 1;
-    }
-    else{
-      return 0;
-    }
-  },
-
-  laseRedeem: function() {
-    if(!isQRcode(this.campaign,this.qrcode)){
-      return ""; 
-    }
-    return moment(this.qrcode.redeemed).format("LL");;
   }
 });
 

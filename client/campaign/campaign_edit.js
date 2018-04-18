@@ -1,10 +1,13 @@
 
 var firstLoad=0
+var diableLoadData = 0;
+var data= {};
 
 Template.campaignEdit.onCreated(function() {
    Session.set('campaignEditErrors', {});
    Session.set('campaignEditShopcodes', []);
    firstLoad = 0;
+   diableLoadData = 0;
 });
  
 Template.campaignEdit.helpers({
@@ -24,27 +27,50 @@ Template.campaignEdit.helpers({
     return Session.get("campaignEditShopcodes");
   },
 
-  campaignDate: function () {
-    return {
-      startDate: moment(this.campaign.startdate).format("YYYY-MM-DD"),
-      endDate: moment(this.campaign.enddate).format("YYYY-MM-DD"),
-      startTime: moment(this.campaign.startdate).format("HH:mm"),
-      endTime: moment(this.campaign.enddate).format("HH:mm")
-    }
-  },
-  rdtypeUnique: function () {
-    if (this.campaign.redeemtype === 'unique')
-      return 'checked';
-  },
+  //rdtypeUnique: function (redeemtype) {
+  //  if (redeemtype === 'unique')
+  //    return 'checked';
+  //},
 
-  rdtypeUnverser: function () {
-    if (this.campaign.redeemtype === 'unverser')
-      return 'checked';
-  },
+  //rdtypeUnverser: function () {
+  //  if (this.campaign.redeemtype === 'unverser')
+  //    return 'checked';
+  ///},
 
   ownCampaign: function(campaign) {
     return ownsDocument(Meteor.userId(),campaign)
   },
+
+  campaignData: function (){
+  if (diableLoadData == 0){
+
+      var rdtypeUnique   = '';
+      var rdtypeUnverser = '';
+
+      if (this.campaign.redeemtype === 'unique')
+        rdtypeUnique ='checked';  
+
+      if (this.campaign.redeemtype === 'unverser')
+        rdtypeUnverser= 'checked';
+
+      data = {
+        title: this.campaign.title,
+        number: this.campaign.number,
+        headline: this.campaign.headline,
+        desc: this.campaign.desc,
+        startdate: moment(this.campaign.startdate).format("YYYY-MM-DD"),
+        enddate: moment(this.campaign.enddate).format("YYYY-MM-DD"),
+        starttime: moment(this.campaign.startdate).format("HH:mm"),
+        endtime: moment(this.campaign.enddate).format("HH:mm"),
+        rdtypeUnique: rdtypeUnique,
+        rdtypeUnverser: rdtypeUnverser,
+        url: this.campaign.url,
+      }
+      
+    }
+    return data
+    
+  }
 }); 
 
 Template.campaignEdit.events({
@@ -73,6 +99,8 @@ Template.campaignEdit.events({
 
   'submit form': function(e) {
     e.preventDefault();
+
+    diableLoadData = 1;
 
     var cpDate = {
       startDate : $(e.target).find('[name=startdate]').val(),
@@ -105,17 +133,21 @@ Template.campaignEdit.events({
       return Session.set('campaignEditErrors', errors);
     }
  
-    Meteor.call('updateCampaignImage_campaignId', contentId,currentCampaignId);
-    Campaigns.update(currentCampaignId, {$set: campaignProperties}, function(error) {
-      if (error) {
-        throwError(error.reason);
-      } else {
-          firstOpen=0
-          Router.go('campaignPage', {_id: currentCampaignId});
-      }
-    });
+    Meteor.call('updateCampaignImage_campaignId', contentId, currentCampaignId);
 
-    
+    Meteor.call('campaignUpdate', currentCampaignId, campaignProperties, function(error, result) {
+      if (error){
+        return throwError(error.reason);
+      }
+      if (result.postExists){
+        var errors = {};
+        errors.title = 'Title "'+ campaignProperties.title + '" has already';
+        return Session.set('campaignEditErrors', errors);
+      }
+
+      firstOpen=0
+      Router.go('campaignPage', {_id: result._id}); 
+    });
   },
  
   'click .delete': function(e) {

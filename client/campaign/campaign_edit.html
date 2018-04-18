@@ -6,28 +6,28 @@
     <div class="form-group {{errorClass 'title'}}">
       <label class="control-label" for="title">Title</label>
       <div class="controls">
-        <input name="title" id="title" type="text" value="{{campaign.title}}" placeholder="Title" class="form-control" maxlength="50"/>
+        <input name="title" id="title" type="text" value="{{campaignData.title}}" placeholder="Title" class="form-control" maxlength="50"/>
         <span class="help-block">{{errorMessage 'title'}}</span>
       </div>
     </div>
     <div class="form-group {{errorClass 'number'}}">
       <label class="control-label" for="number">Number</label>
       <div class="controls">
-        <input name="number" id="number" type="text" value="{{campaign.number}}" placeholder="Number" class="form-control" maxlength="20"/>
+        <input name="number" id="number" type="text" value="{{campaignData.number}}" placeholder="Number" class="form-control" maxlength="20"/>
         <span class="help-block">{{errorMessage 'number'}}</span>
       </div>
     </div>
     <div class="form-group {{errorClass 'headline'}}">
       <label class="control-label" for="headline">Headline</label>
       <div class="controls">
-        <input name="headline" id="headline" type="text" value="{{campaign.headline}}" placeholder="Headline" class="form-control" maxlength="100"/>
+        <input name="headline" id="headline" type="text" value="{{campaignData.headline}}" placeholder="Headline" class="form-control" maxlength="100"/>
         <span class="help-block">{{errorMessage 'headline'}}</span>
       </div>
     </div>
     <div class="form-group {{errorClass 'desc'}}">
         <label class="control-label" for="desc">Description</label>
         <div class="controls">
-          <textarea name="desc" id="desc" class="form-control" rows="7" value="{{campaign.desc}}"></textarea>
+          <textarea name="desc" id="desc" class="form-control" rows="7" value="{{campaignData.desc}}"></textarea>
           <span class="help-block">{{errorMessage 'description'}}</span>
         </div>
     </div>
@@ -35,10 +35,10 @@
         <label class="control-label" for="redeemtype">Redeem</label>
         <div class="controls">
             <label class="radio-inline">
-              <input type="radio" id="rdtypeunique" name="redeemtype" value="unique" {{rdtypeUnique}}>Unique
+              <input type="radio" id="rdtypeunique" name="redeemtype" value="unique" {{campaignData.rdtypeUnique}}>Unique
             </label>
             <label class="radio-inline">
-              <input type="radio" id="rdtypeunverser" name="redeemtype" value="unverser" {{rdtypeUnverser}}>Unverser
+              <input type="radio" id="rdtypeunverser" name="redeemtype" value="unverser" {{campaignData.rdtypeUnverser}}>Unverser
             </label>
         </div>
     </div>
@@ -46,11 +46,11 @@
     <div class="form-group">
         <label class="control-label" for="campaigndate">Campaign Date</label>
         <div class="controls">
-              <input type="date" name="startdate" value= "{{campaignDate.startDate}}">
-              <input type="time" name="starttime" value= "{{campaignDate.startTime}}">
+              <input type="date" name="startdate" value= "{{campaignData.startdate}}">
+              <input type="time" name="starttime" value= "{{campaignData.starttime}}">
               <span>-</span>
-              <input type="date" name="enddate" value= "{{campaignDate.endDate}}">
-              <input type="time" name="endtime" value= "{{campaignDate.endTime}}">
+              <input type="date" name="enddate" value= "{{campaignData.enddate}}">
+              <input type="time" name="endtime" value= "{{campaignData.endtime}}">
         </div>
     </div>
     <div class="form-group">

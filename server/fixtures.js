@@ -1,4 +1,5 @@
 // Fixture data for Test
+import { Random } from 'meteor/random'
 
 if (Campaigns.find().count() === 0) {
 
@@ -113,7 +114,7 @@ if (Campaigns.find().count() === 0) {
             author: fufu.username,
             submitted: new Date(now - 2 * 24 * 3600 * 1000),
             body: 'aaaaaaa aaaaaaa aaaaaaa aaaaaaa',
-            code:'ABCD1',
+            code:'JSP1',
             redeem: 0
       });
 
@@ -144,7 +145,7 @@ if (Campaigns.find().count() === 0) {
                         author: fufu.username,
                         submitted: new Date((now - 2 * 24 * 3600 * 1000)+j+1),
                         body: 'DDDDDDDDDD RRRRRRRRRR RRRRRRRRRRR RRRRRRRRR' + j,
-                        code: number+'QR'+ j,
+                        code: Random.id(6),
                         redeem: 0
                   });
             } 
@@ -180,7 +181,7 @@ if (Campaigns.find().count() === 0) {
                         author: nook.username,
                         submitted: new Date((now - 2 * 24 * 3600 * 1000)+j+1),
                         body: 'DDDDDDDDDD RRRRRRRRRR RRRRRRRRRRR RRRRRRRRR' + j,
-                        code: number+'QR'+ j,
+                        code: Random.id(6),
                         redeem: 0
                   });
             } 
