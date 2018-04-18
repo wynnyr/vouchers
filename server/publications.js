@@ -94,7 +94,16 @@ Meteor.publishComposite('detailQrcodesWithImageFromQR', function(qr) {
   check(qr, String)
   return {
     find() {
-      return Qrcodes.find({code : qr})
+      return Qrcodes.find({code : qr},
+        {
+          fields:
+          {
+            author:false, 
+            userId:false,
+          }
+          
+      }
+      )
     },
     children: [
       {
@@ -107,6 +116,7 @@ Meteor.publishComposite('detailQrcodesWithImageFromQR', function(qr) {
               fields:
               {
                 author:false, 
+                userId:false,
                 qrcodesCount:false,
                 redeemed:false,
                 shopcodes:false,

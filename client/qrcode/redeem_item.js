@@ -32,6 +32,27 @@ Template.redeemItem.onCreated(function() {
     return Session.get('redeemItemFailure');
   },
 
+  nonExisting: function() {
+    if(!isQRcode(this.campaign,this.qrcode)){
+      return 1; 
+    }
+    else{
+      return 0;
+    }
+  },
+
+  isExpired: function() {
+    if(!isQRcode(this.campaign,this.qrcode)){
+      return 1; 
+    }
+    else if(this.expired === 1){
+      return 1;
+    }
+    else{
+      return 0;
+    }
+  },
+
   isRedeemed: function() {
     if(!isQRcode(this.campaign,this.qrcode)){
       return 1; 

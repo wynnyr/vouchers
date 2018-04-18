@@ -11,7 +11,16 @@
 {{else if failureRedeem}}
       <div class = "redeemed-failure">
             <h1>Invalid merchant.</h1>
-            <div>{{laseRedeem}}</div>
+      </div>
+{{else if nonExisting}}
+      <div class = "redeemed-error">
+            <h1>Non-Existing Voucher.</h1>
+            <div>The Voucher with the code does not exist.</div>
+      </div>
+{{else if isExpired}}
+      <div class = "redeemed-error">
+            <h1>Voucher expired.</h1>
+            <div>{{dateend campaign.enddate}}</div>
       </div>
 {{else if isRedeemed}}
       <div class = "redeemed-error">
