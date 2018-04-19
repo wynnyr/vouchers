@@ -1,5 +1,7 @@
 <template name="campaignEdit">
-  {{#if ownCampaign campaign}}
+{{#unless ready}}
+  {{> spinner}}
+{{else if ownCampaign campaign}} 
   <form class="main form page">
     <h2>Campaign Information <small>(edit)</small></h2>
     <br>
@@ -84,10 +86,6 @@
     <a class="btn btn-danger delete" href="#">Delete campaign</a>
   </form>
   {{else}}
-    {{#unless ready}}
-      {{> spinner}}
-    {{else}} 
-      {{> notFound}}
-    {{/unless}}
-  {{/if}}
+    {{> accessDenied}}
+  {{/unless}}
 </template>

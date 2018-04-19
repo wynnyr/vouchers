@@ -3,12 +3,13 @@
         <div class="form-group {{errorClass 'code'}}">
             <label class="control-label" for="code">Code</label>
             <div class="controls input-group">
-                <div class="input-group-addon">
-                    <div class="glyphicon glyphicon-refresh randoncode"></div>
-                </div>
-                <input name="code" id="code" type="text" value="{{codeRandom}}" placeholder="QR Code" class="form-control"/>
-                <span class="help-block">{{errorMessage 'code'}}</span>
+                    <div class="input-group-addon">
+                        <div class="glyphicon glyphicon-refresh randoncode" style="color :rgb(255, 0,0)"></div>
+                    </div>
+                    <input name="code" id="code" type="text" value="{{codeRandom}}" placeholder="QR Code" class="form-control"/>
+                    
             </div>
+            <span class="help-block">{{errorMessage 'code'}}</span>
         </div>
         <div class="form-group {{errorClass 'body'}}">
             <label for="body">Add note on this qrcode</label>
@@ -18,7 +19,7 @@
             </div>
         </div>
         <input type="submit" value="Update" class="btn btn-primary submit"/>
-        <a class="btn btn-primary cancel" href="{{pathFor 'campaignPage' _id= this.campaignId }}">Cancel</a>
+        <a class="btn btn-primary cancel" href="{{pathFor 'campaignPage' _id=this.campaignId }}">Cancel</a>
         <hr/>
         <a class="btn btn-danger delete" href="">Delete</a>
     </form>

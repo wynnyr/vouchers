@@ -1,5 +1,7 @@
 Template.campaignQRInsert.helpers({
-   ownCampaign: function(campaign) {
-      return ownsDocument(Meteor.userId(),campaign)
-   },
- });
+  ownCampaign: function(campaign) {
+    if(!campaign)
+      return 0;
+    return ownsDocument(Meteor.userId(),campaign)
+  },
+});

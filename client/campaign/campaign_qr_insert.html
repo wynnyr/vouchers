@@ -1,16 +1,14 @@
 <template name="campaignQRInsert">
-  {{#if ownCampaign campaign}}
-  <div class="campaign-page page">
-    {{> campaignItem campaign}}
-    <ul class="qrcodes">
-      {{>qrcodeCreate campaign}}
-    </ul>
-  </div>
+  {{#unless ready}}
+    {{> spinner}}
+  {{else if ownCampaign campaign}} 
+    <div class="campaign-page page">
+      {{> campaignItem campaign}}
+      <ul class="qrcodes">
+        {{>qrcodeCreate campaign}}
+      </ul>
+    </div>
   {{else}}
-    {{#unless ready}}
-      {{> spinner}}
-    {{else}} 
-      {{> notFound}}
-    {{/unless}}
-  {{/if}}
+    {{> notFound}}
+  {{/unless}}
 </template>

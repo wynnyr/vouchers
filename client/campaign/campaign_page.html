@@ -1,6 +1,9 @@
 <template name="campaignPage"> 
-  {{#if ownCampaign campaign}}
+  {{#unless ready}}
+    {{> spinner}}
+  {{else if ownCampaign campaign}} 
     <div class="campaign-page page"> 
+      
       {{> campaignItem campaign}} 
     
       <ul class="qrcodes">
@@ -19,10 +22,6 @@
       </ul>
     </div> 
   {{else}}
-    {{#unless ready}}
-      {{> spinner}}
-    {{else}} 
       {{> notFound}}
-    {{/unless}}
-  {{/if}}
+  {{/unless}}
 </template>

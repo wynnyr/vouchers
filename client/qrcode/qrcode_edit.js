@@ -38,8 +38,8 @@ Template.qrcodeEdit.events({
   'submit form': function(e) {
     e.preventDefault();
 
-    var currentQrcodeId   = this._id;
-
+    var currentQrcodeId = this._id;
+    var currentCampaignId = this.campaignId;
     var qrcodeProperties = {
       code: e.target.code.value,
       body: e.target.body.value,
@@ -50,13 +50,19 @@ Template.qrcodeEdit.events({
       return Session.set('qrcodeEditErrors', errors);
     }
 
-    Qrcodes.update(currentQrcodeId, {$set: qrcodeProperties}, function(error) {
-      if (error) {
+    Meteor.call('qrcodeUpdate', currentQrcodeId, qrcodeProperties, function(error, result) {
+      if (error){
         return throwError(error.reason);
       }
-    });
 
-    Router.go('campaignPage', {_id: this.campaignId}); 
+      if (result.qrcodeExists){
+        var errors = {};
+        errors.code = 'Code "'+ qrcodeProperties.code + '" has already';
+        return Session.set('qrcodeEditErrors', errors);
+      }
+      Router.go('campaignPage', {_id:currentCampaignId}); 
+    });
+ 
   },
 
   'click .delete': function(e) {

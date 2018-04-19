@@ -27,17 +27,9 @@ Template.campaignEdit.helpers({
     return Session.get("campaignEditShopcodes");
   },
 
-  //rdtypeUnique: function (redeemtype) {
-  //  if (redeemtype === 'unique')
-  //    return 'checked';
-  //},
-
-  //rdtypeUnverser: function () {
-  //  if (this.campaign.redeemtype === 'unverser')
-  //    return 'checked';
-  ///},
-
   ownCampaign: function(campaign) {
+    if (!campaign)
+      return 0;
     return ownsDocument(Meteor.userId(),campaign)
   },
 
@@ -132,7 +124,7 @@ Template.campaignEdit.events({
     if (errors.title || errors.number || errors.headline || errors.desc){
       return Session.set('campaignEditErrors', errors);
     }
- 
+
     Meteor.call('updateCampaignImage_campaignId', contentId, currentCampaignId);
 
     Meteor.call('campaignUpdate', currentCampaignId, campaignProperties, function(error, result) {
