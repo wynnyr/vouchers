@@ -151,3 +151,30 @@
   display: none;
 }
 
+.show-redeem-code{
+  position: fixed;
+  bottom: 15px;
+  left: 20px;
+  font-size: 20px;
+  color:#00FF00;
+  text-align: center;
+  padding: 10px 20px;
+}
+
+.show-redeem-code{
+  position: fixed;
+  bottom: 15px;
+  left: 20px;
+  font-size: 20px;
+  color:#00FF00;
+  text-align: center;
+  padding: 10px 20px;
+}
+
+.redeemstatus-secretcode {
+  font-size: 160px;
+  color:#00FFF0;
+  text-align: center;
+  padding: 10px 20px;
+}
+

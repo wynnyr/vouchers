@@ -18,7 +18,6 @@ Meteor.publish('campaigns', function(userId,options) {
             content:false,
             desc:false,
             url:false,
-            submitted:false,
           }},
           options);
 });
@@ -106,6 +105,7 @@ Meteor.publishComposite('detailQrcodesWithImageFromQR', function(qr) {
         {
           fields:
           {
+            secretCode:false,
             author:false, 
             userId:false,
           }

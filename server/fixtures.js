@@ -39,6 +39,7 @@ if (Campaigns.find().count() === 0) {
             submitted: new Date(now - 2 * 24 * 3600 * 1000),
             body: 'aaaaaaa aaaaaaa aaaaaaa aaaaaaa',
             code:'ABCD1',
+            secretCode: Random.id(4),
             redeem: 1,
             view: 1,
             fail:0
@@ -60,6 +61,7 @@ if (Campaigns.find().count() === 0) {
                   submitted: new Date((now - 2 * 24 * 3600 * 1000)+i+1),
                   body: 'bbbbbbbb bbbbbbbb bbbbbbbb bbbbbbbb' + i,
                   code: 'bbq' + i,
+                  secretCode: Random.id(4),
                   redeem: 0,
                   view: 0,
                   fail: 0
@@ -94,6 +96,7 @@ if (Campaigns.find().count() === 0) {
                   submitted: new Date((now - 2 * 24 * 3600 * 1000)+i+1),
                   body: 'DDDDDDDDDD RRRRRRRRRR RRRRRRRRRRR RRRRRRRRR' + i,
                   code: 'viva' + i,
+                  secretCode: Random.id(4),
                   redeem: 0,
                   view: 0,
                   fail: 0
@@ -127,6 +130,7 @@ if (Campaigns.find().count() === 0) {
             submitted: new Date(now - 2 * 24 * 3600 * 1000),
             body: 'aaaaaaa aaaaaaa aaaaaaa aaaaaaa',
             code:'JSP1',
+            secretCode: Random.id(4),
             redeem: 0,
             view: 0,
             fail: 0
@@ -162,6 +166,7 @@ if (Campaigns.find().count() === 0) {
                         submitted: new Date((now - 2 * 24 * 3600 * 1000)+j+1),
                         body: 'DDDDDDDDDD RRRRRRRRRR RRRRRRRRRRR RRRRRRRRR' + j,
                         code: Random.id(6),
+                        secretCode: Random.id(4),
                         redeem: 0,
                         view: 0,
                         fail: 0
@@ -202,6 +207,7 @@ if (Campaigns.find().count() === 0) {
                         submitted: new Date((now - 2 * 24 * 3600 * 1000)+j+1),
                         body: 'DDDDDDDDDD RRRRRRRRRR RRRRRRRRRRR RRRRRRRRR' + j,
                         code: Random.id(6),
+                        secretCode: Random.id(4),
                         redeem: 0,
                         view: 0,
                         fail: 0
