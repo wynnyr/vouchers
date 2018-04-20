@@ -3,7 +3,7 @@
       <div class="qritem-table">
             <div class="qritem-row">
                   <div class="qritem-col-redeemcount">
-                        <span><a href="{{pathFor 'redeemItem'}}/{{code}}">{{redeem}}</a></span>
+                        <span><a href="{{pathFor 'redeemItem'}}/{{code}}?mode=preview">{{redeem}}</a></span>
                   </div>
                   <div class="qritem-col-code" style="display:table-cell">
                         <div><a href="{{pathFor 'campaignQREdit'}}">{{> QRCode text = redeemcode size="64px"}}</a></div>
@@ -17,6 +17,7 @@
       <h4>
             <span class="author">{{author}}</span>
             <span class="date">on {{submittedText}}</span>
+            <span class="score">[ {{view}} / {{fail}} ]</span>
       </h4>
 </li>
 </template>

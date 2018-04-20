@@ -93,9 +93,15 @@ body {
 .qrcodes li h4 a {
     font-size: 10px; 
 }
+.qrcodes li h4 .score {
+  font-size: 10px;
+  font-weight: normal;
+  float: right; 
+}
 .qrcodes li p:last-child {
     margin-bottom: 0; 
 }
+
 
 .qritem-table {
   display:table;

@@ -1,13 +1,29 @@
+var firstLoad=0
 Template.redeemItem.onCreated(function() {
    Session.set('redeemItemError', {});
    Session.set('redeemItemSuccess', 0);
    Session.set('redeemItemFailure', 0);
+   firstLoad = 0;
  });
 
  Template.redeemItem.helpers({
+  incView: function() {
+    console.log('insView->m='+this.mode);
+    if (firstLoad == 0 && this.mode != 'preview'){
+      firstLoad = 1;
+      Meteor.call('qrview', this.campaign._id,this.qrcode._id, function(error, result) {
+        if (error){
+          return;
+        }
+      })
+      
+    }
+  },
+
   errorMessage: function(field) {
     return Session.get('redeemItemError')[field];
   },
+
   errorClass: function (field) {
     return !!Session.get('redeemItemError')[field] ? 'has-error' : '';
   },
@@ -31,24 +47,19 @@ Template.redeemItem.onCreated(function() {
     if(!isQRcode(this.campaign,this.qrcode))
       return '<div class = "redeemed-failure"> <h1>Non-Existing Voucher.</h1><div>The Voucher with the code does not exist.</div>'
     else{
-      console.log('expired-->'+this.expired);
       var lastRedeem  = moment(this.qrcode.redeemed).format("LL")
       var endCampaign = moment(this.campaign.enddate).format("LL")
 
       if (Session.get('redeemItemSuccess')){
-        console.log('success');
         return '<div class = "redeemed-success"> <h1>The coupon was redeemed.</h1><div>'+ lastRedeem +'</div>'
       }
       else if (Session.get('redeemItemFailure')){
-        console.log('Invalid');
         return '<div class = "redeemed-failure"> <h1>Invalid merchant.</h1>'
       }
       else if(this.expired){
-        console.log('expired');
         return '<div class = "redeemed-failure"> <h1>Voucher expired.</h1><div>'+ endCampaign +'</div>'
       }
       else if((this.campaign.redeemtype === 'unique') && (this.qrcode.redeem > 0)){
-        console.log('redeemed');
         return '<div class = "redeemed-failure"> <h1>This voucher has been already redeemed.</h1><div>'+ lastRedeem +'</div>'
       }
       else{
