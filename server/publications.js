@@ -12,7 +12,15 @@ Meteor.publish('campaigns', function(userId,options) {
     sort: Object,
     limit: Number
   });
-  return Campaigns.find({userId: userId}, options);
+  return Campaigns.find({userId: userId},{
+          fields:{
+            shopcodes:false,
+            content:false,
+            desc:false,
+            url:false,
+            submitted:false,
+          }},
+          options);
 });
 
 Meteor.publish('singleCampaign', function(_id, userId) {
