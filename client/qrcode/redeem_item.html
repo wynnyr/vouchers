@@ -4,7 +4,10 @@
       {{> spinner}}
 {{else}}
       {{#if redeemStatus}}
-            {{{redeemStatus}}}
+            {{redeemStatus}}
+            <div class = "redeem-barcode">
+                  {{> xvendo_barcoder id="idme" ean=campaignBarcode }}
+            </div>
       {{else}}
          {{incView}}
          <div class = "redeem-content">

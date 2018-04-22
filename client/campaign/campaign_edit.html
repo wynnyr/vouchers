@@ -73,7 +73,7 @@
     <div class="form-group {{errorClass 'barcode'}}">
         <label class="control-label" for="barcode">EAN-13 Barcode</label>
         <div class="controls">
-              <input name="barcode" id="barcode" type="text" value="{{campaign.barcode}}" placeholder="EAN-13 Barcode" pattern="[0-9]{13}" title="EAN-13 Format" class="form-control"/>
+              <input name="barcode" id="barcode" type="text" value="{{campaign.barcode}}" placeholder="EAN-13 Barcode" pattern="[0-9]{12}" title="EAN-13 Format" class="form-control"/>
               <span class="help-block">{{errorMessage 'barcode'}}</span>
         </div>
     </div>

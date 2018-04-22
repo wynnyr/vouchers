@@ -26,7 +26,15 @@ Meteor.publish('campaigns', function(userId,options) {
 Meteor.publish('singleCampaign', function(_id, userId) {
   check(_id, String);
   check(userId, String);
-  return Campaigns.find({_id: _id, userId: userId});
+  return Campaigns.find({_id: _id, userId: userId},{
+          fields:{
+            shopcodes:false,
+            content:false,
+            desc:false,
+            barcode:false,
+            url:false,
+          }
+        });
 });
 
 Meteor.publishComposite('singleCampaignWithImage', function(_id,userId) {

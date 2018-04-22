@@ -4,6 +4,7 @@ Template.redeemItem.onCreated(function() {
    Session.set('redeemItemSuccess', 0);
    Session.set('redeemItemFailure', 0);
    Session.set('redeemSecretCode', '');
+   Session.set('redeemBarcode', '');
    firstLoad = 0;
  });
 
@@ -19,6 +20,7 @@ Template.redeemItem.onCreated(function() {
       })
     }
   },
+  
 
   errorMessage: function(field) {
     return Session.get('redeemItemError')[field];
@@ -45,26 +47,31 @@ Template.redeemItem.onCreated(function() {
 
   redeemStatus: function() {
     if(!isQRcode(this.campaign,this.qrcode))
-      return '<div class = "redeemed-failure"> <h1>Non-Existing Voucher.</h1><div>The Voucher with the code does not exist.</div>'
+      return Spacebars.SafeString('<div class = "redeemed-failure"> <h1>Non-Existing Voucher.</h1><div>The Voucher with the code does not exist.</div>')
     else{
       var lastRedeem  = moment(this.qrcode.redeemed).format("LL");
       var endCampaign = moment(this.campaign.enddate).format("LL");
       if (Session.get('redeemItemSuccess')){
-        return '<div class = "redeemed-success"> <h1>The coupon was redeemed.</h1><div>'+ lastRedeem +'</div></div> <div class="redeemstatus-secretcode"> <h1>Secret Code</h1><div>'+ Session.get('redeemSecretCode')+'</div>'
+        //return '<div class = "redeemed-success"> <h1>The coupon was redeemed.</h1><div>'+ lastRedeem +'</div></div> <div class="redeemstatus-secretcode"> <h1>Secret Code</h1><div>'+ Session.get('redeemSecretCode')+'</div></div> <div class="redeem-barcode" id="barcode">' + Session.get('redeemBarcode')+'</div>'
+        return Spacebars.SafeString('<div class = "redeemed-success"> <h1>The coupon was redeemed.</h1><div>'+ lastRedeem +'</div></div> <div class="redeemstatus-secretcode"> <h1>Secret Code</h1><div>'+ Session.get('redeemSecretCode')+'</div></div>')
       }
       else if (Session.get('redeemItemFailure')){
-        return '<div class = "redeemed-failure"> <h1>Invalid merchant.</h1>'
+        return Spacebars.SafeString('<div class = "redeemed-failure"> <h1>Invalid merchant.</h1>')
       }
       if(this.expired){
-        return '<div class = "redeemed-failure"> <h1>Voucher expired.</h1><div>'+ endCampaign +'</div>'
+        return Spacebars.SafeString('<div class = "redeemed-failure"> <h1>Voucher expired.</h1><div>'+ endCampaign +'</div>');
       }
       else if((this.campaign.redeemtype === 'unique') && (this.qrcode.redeem > 0)){
-        return '<div class = "redeemed-failure"> <h1>This voucher has been already redeemed.</h1><div>'+ lastRedeem +'</div>'
+        return Spacebars.SafeString('<div class = "redeemed-failure"> <h1>This voucher has been already redeemed.</h1><div>'+ lastRedeem +'</div>')
       }
       else{
-        return 0
+        return ''
       }
     }
+  },
+
+  campaignBarcode: function(e) {
+    return Session.get('redeemBarcode')
   }
 });
 
@@ -115,12 +122,14 @@ Template.redeemItem.events({
           console.log("redeem status: Redeem Success");
           Session.set('redeemItemSuccess', 1);
           Session.set('redeemSecretCode', result.secretCode);
+          Session.set('redeemBarcode', result.barcode);
           return;
         }
         else{
           console.log("redeem status: Invalid merchant");
           Session.set('redeemItemFailure', 1);
           Session.set('redeemSecretCode', '');
+          Session.set('redeemBarcode', '');
           return;
         }
     });

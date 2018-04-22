@@ -30,3 +30,5 @@ jayuda:flx-qrcode
 reywood:publish-composite
 momentjs:moment
 ejson@1.1.0
+xvendo:barcoder
+lfergon:exportcsv
