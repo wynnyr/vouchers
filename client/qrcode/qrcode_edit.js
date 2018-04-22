@@ -9,10 +9,6 @@ Template.qrcodeEdit.onCreated(function() {
 });
  
 Template.qrcodeEdit.helpers({
-  ownCampaign: function() {
-    return this.userId === Meteor.userId()
-  },
-
   errorMessage: function(field) {
      return Session.get('qrcodeEditErrors')[field];
   },

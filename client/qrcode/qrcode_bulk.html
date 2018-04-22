@@ -1,0 +1,22 @@
+<template name="qrcodeBulk">
+    <form name="qrcodeBulk" class="qrcodes-form form">
+        <h2>Mass QR Code Generator</h2>
+        <div class="form-group {{errorClass 'count'}}">
+            <label class="control-label" for="count">Count (max. 50)</label>
+            <div class="controls">
+                <input name="count" id="count" type="number" value="1" class="form-control" min="1" max="5"/>
+                <span class="help-block">{{errorMessage 'count'}}</span>
+            </div>
+        </div>
+        <div class="form-group {{errorClass 'body'}}">
+            <label for="body">Add note</label>
+            <div class="controls">
+                <textarea name="body" id="body" class="form-control" rows="7"></textarea>
+                <span class="help-block">{{errorMessage 'body'}}</span>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Generator</button>
+        <a class="btn btn-primary cancel" href="{{pathFor 'campaignPage' _id=this._id}}">Cancel</a>
+    </form>
+</template>

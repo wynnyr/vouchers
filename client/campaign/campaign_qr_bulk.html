@@ -1,0 +1,14 @@
+<template name="campaignQRBulk">
+      {{#unless ready}}
+        {{> spinner}}
+      {{else if ownCampaign campaign}} 
+        <div class="campaign-page page">
+          {{> campaignItem campaign}}
+          <ul class="qrcodes">
+            {{> qrcodeBulk campaign}}
+          </ul>
+        </div>
+      {{else}}
+        {{> notFound}}
+      {{/unless}}
+    </template>
