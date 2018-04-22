@@ -56,6 +56,7 @@ Template.campaignEdit.helpers({
         endtime: moment(this.campaign.enddate).format("HH:mm"),
         rdtypeUnique: rdtypeUnique,
         rdtypeUnverser: rdtypeUnverser,
+        barcode: this.campaign.barcode,
         url: this.campaign.url,
       }
       
@@ -116,6 +117,7 @@ Template.campaignEdit.events({
       enddate: moment(cpDate.endDate +" "+ cpDate.endTime,"YYYY-MM-DD HH:mm")._d,
       content: contentId,
       shopcodes : Session.get("campaignEditShopcodes"),
+      barcode: $(e.target).find('[name=barcode]').val(),
       url:  $(e.target).find('[name=url]').val(),
       redeemtype : e.target.redeemtype.value
     }

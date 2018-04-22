@@ -9,7 +9,7 @@ Template.redeemItem.onCreated(function() {
 
  Template.redeemItem.helpers({
   incView: function() {
-    console.log('insView->m='+this.mode);
+    //console.log('insView->m='+this.mode);
     if (firstLoad == 0 && this.mode != 'preview'){
       firstLoad = 1;
       Meteor.call('qrViewCount', this.campaign._id,this.qrcode._id, function(error, result) {
@@ -17,7 +17,6 @@ Template.redeemItem.onCreated(function() {
           return;
         }
       })
-      
     }
   },
 
@@ -51,12 +50,12 @@ Template.redeemItem.onCreated(function() {
       var lastRedeem  = moment(this.qrcode.redeemed).format("LL");
       var endCampaign = moment(this.campaign.enddate).format("LL");
       if (Session.get('redeemItemSuccess')){
-        return '<div class = "redeemed-success"> <h1>The coupon was redeemed.</h1><div>'+ lastRedeem +'</div><div class=redeemstatus-secretcode>'+ Session.get('redeemSecretCode')+'<div>'
+        return '<div class = "redeemed-success"> <h1>The coupon was redeemed.</h1><div>'+ lastRedeem +'</div></div> <div class="redeemstatus-secretcode"> <h1>Secret Code</h1><div>'+ Session.get('redeemSecretCode')+'</div>'
       }
       else if (Session.get('redeemItemFailure')){
         return '<div class = "redeemed-failure"> <h1>Invalid merchant.</h1>'
       }
-      else if(this.expired){
+      if(this.expired){
         return '<div class = "redeemed-failure"> <h1>Voucher expired.</h1><div>'+ endCampaign +'</div>'
       }
       else if((this.campaign.redeemtype === 'unique') && (this.qrcode.redeem > 0)){
@@ -70,23 +69,8 @@ Template.redeemItem.onCreated(function() {
 });
 
 Template.redeemItem.events({
-  /*
-  'click .redeemshow': function() {
-    $(".redeemContent").css('display', 'none');
-    $(".redeemForm").css('display', 'block');
-  },
-
-  'click .redeemhide': function() {
-      $(".redeemContent").css('display', 'block');
-      $(".redeemForm").css('display', 'none');
-  },
-*/
-
-
   'submit form': function(e,template) {
       e.preventDefault();
-
-      
 
       var qrcodeProperties = {
         qrcodeId:   template.data.qrcode._id,

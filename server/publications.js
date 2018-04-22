@@ -17,6 +17,7 @@ Meteor.publish('campaigns', function(userId,options) {
             shopcodes:false,
             content:false,
             desc:false,
+            barcode:false,
             url:false,
           }},
           options);
@@ -108,6 +109,8 @@ Meteor.publishComposite('detailQrcodesWithImageFromQR', function(qr) {
             secretCode:false,
             author:false, 
             userId:false,
+            view:false,
+            submitted:false,
           }
           
       }
@@ -129,6 +132,9 @@ Meteor.publishComposite('detailQrcodesWithImageFromQR', function(qr) {
                 redeemed:false,
                 shopcodes:false,
                 submitted:false,
+                totalFail:false,
+                totalView:false,
+
               }
             }
           )
@@ -143,6 +149,7 @@ Meteor.publishComposite('detailQrcodesWithImageFromQR', function(qr) {
             {
               fields:
               {
+                campaignId:false,
                 author:false,
                 redeem:false,
                 submitted:false,

@@ -130,6 +130,7 @@
   text-align: center;
   padding: 40px 20px;
 }
+
 .redeemed-failure div {
   text-align: center;
   font-size: 12px;
@@ -171,10 +172,34 @@
   padding: 10px 20px;
 }
 
+
 .redeemstatus-secretcode {
-  font-size: 160px;
-  color:#00FFF0;
+  margin-top: 60px;
+  /*
+  background: #cccccc;
+  margin-top: 50px;
+  margin-right: 10%;
+  margin-left: 10%;
+  margin-bottom: 10%;
+  padding: 5px 0px 90px 0px;
+  border-radius: 10px;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  */
+}
+.redeemstatus-secretcode h1 {
+  font-size: 20px;
+  color:#000000;
   text-align: center;
-  padding: 10px 20px;
+  padding-bottom: 5px;
+}
+.redeemstatus-secretcode div {
+  font-size: 30px;
+  text-align: center;
+  background: #cccccc;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color:rgb(5, 119, 21);
 }
 

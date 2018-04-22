@@ -1,5 +1,6 @@
 <template name="qrcodeCreate">
     <form name="qrcodes" class="qrcodes-form form">
+        <h2>Code Information <small>(add)</small></h2>
         <div class="form-group {{errorClass 'code'}}">
             <label class="control-label" for="code">Code</label>
             <div class="controls input-group">
@@ -11,9 +12,9 @@
             <span class="help-block">{{errorMessage 'code'}}</span>
         </div>
         <div class="form-group {{errorClass 'body'}}">
-            <label for="body">Add note on this qrcode</label>
+            <label for="body">Add note on this code</label>
             <div class="controls">
-                <textarea name="body" id="body" class="form-control" rows="3"></textarea>
+                <textarea name="body" id="body" class="form-control" rows="7"></textarea>
                 <span class="help-block">{{errorMessage 'body'}}</span>
             </div>
         </div>

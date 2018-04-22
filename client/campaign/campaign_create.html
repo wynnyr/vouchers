@@ -66,14 +66,20 @@
                      {{> imageUpload}}
                </div>
          </div>
+         <div class="form-group {{errorClass 'barcode'}}">
+                  <label class="control-label" for="barcode">EAN-13 Barcode</label>
+                  <div class="controls">
+                        <input name="barcode" id="barcode" type="text" value="" placeholder="EAN-13 Barcode" pattern="[0-9]{13}" title="EAN-13 Format" class="form-control"/>
+                        <span class="help-block">{{errorMessage 'barcode'}}</span>
+                  </div>
+         </div>
          <div class="form-group {{errorClass 'url'}}">
                <label class="control-label" for="headline">Website</label>
                <div class="controls">
-                     <input name="url" id="url" type="url" value="http://" placeholder="http:// or https://" class="form-control"/>
+                     <input name="url" id="url" type="url" placeholder="http:// or https://" pattern="https?://.+" title="Include http://" class="form-control"/>
                      <span class="help-block">{{errorMessage 'url'}}</span>
                </div>
          </div>
-   
          <br>
          <br>
          <input type="submit" value="Create Campaign" class="btn btn-primary"/>

@@ -73,6 +73,7 @@ Template.campaignCreate.events({
       enddate: moment(cpDate.endDate +" "+cpDate.endTime,"YYYY-MM-DD HH:mm")._d,
       content: contentId,
       shopcodes : Session.get("campaignCreateShopcodes"),
+      barcode: $(e.target).find('[name=barcode]').val(),
       url: $(e.target).find('[name=url]').val(),
       redeemtype : e.target.redeemtype.value
     };
