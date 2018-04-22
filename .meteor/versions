@@ -50,7 +50,6 @@ iron:url@1.1.0
 jayuda:flx-qrcode@0.0.1
 jquery@1.11.11
 launch-screen@1.1.1
-lfergon:exportcsv@0.0.8
 livedata@1.0.18
 localstorage@1.2.0
 logging@1.1.20

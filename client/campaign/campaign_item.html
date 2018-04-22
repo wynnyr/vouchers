@@ -15,10 +15,15 @@
                 created by {{author}}
             </div>
         </div>
-        <div class>
-            {{#if ownCampaign}}<a href="{{pathFor 'campaignQRInsert'}}" class="view btn btn-default">Add</a>{{/if}}
-            {{#if ownCampaign}}<a href="{{pathFor 'campaignEdit'}}" class="view btn btn-default">Edit</a>{{/if}}
-        </div>
+        {{#if ownCampaign}}
+            <div class="view btn-group">
+                <a href="{{pathFor 'campaignEdit'}}" class="btn btn-default">Edit</a>
+                <a href="{{pathFor 'campaignQRInsert'}}" class="btn btn-default">Add</a>
+                <a href="#" class="btn btn-default bulkAdd">Bulk</a>
+                <a href="#" class="btn btn-default csvExport">Export</a>
+            </div>
+        {{/if}}
+
     </div>
     
 </template>
