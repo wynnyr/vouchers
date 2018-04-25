@@ -1,10 +1,10 @@
-Meteor.publish('campaignsAll', function(options) {
-  check(options, {
-    sort: Object,
-    limit: Number
-  });
-  return Campaigns.find({}, options);
-});
+//Meteor.publish('campaignsAll', function(options) {
+//  check(options, {
+//    sort: Object,
+//    limit: Number
+//  });
+//  return Campaigns.find({}, options);
+//});
 
 Meteor.publish('campaigns', function(userId,options) {
   check(userId, String)
@@ -13,13 +13,14 @@ Meteor.publish('campaigns', function(userId,options) {
     limit: Number
   });
   return Campaigns.find({userId: userId},{
-          fields:{
-            shopcodes:false,
-            content:false,
-            desc:false,
-            barcode:false,
-            url:false,
-          }},
+            fields:{
+              shopcodes:false,
+              content:false,
+              desc:false,
+              barcode:false,
+              url:false,
+            }
+          },
           options);
 });
 
@@ -38,19 +39,19 @@ Meteor.publish('singleCampaign', function(_id, userId) {
 });
 
 Meteor.publishComposite('singleCampaignWithImage', function(_id,userId) {
- check(_id, String)
- check(userId, String);
- return {
-   find() {
-     return Campaigns.find({_id: _id, userId: userId})
-   },
-   children: [
-     {
-       find(campaign) {
-         return CampaignImage.find({_id: campaign.content})
-       }
-     }
-   ]
+  check(_id, String)
+  check(userId, String);
+  return {
+    find() {
+      return Campaigns.find({_id: _id, userId: userId})
+    },
+    children: [
+      {
+        find(campaign) {
+          return CampaignImage.find({_id: campaign.content})
+        }
+      }
+    ]
  }
 });
 
@@ -71,36 +72,36 @@ Meteor.publish('singleQrcodes', function(_id,userId) {
 });
 
 Meteor.publishComposite('detailQrcodesFromQR', function(qr) {
- check(qr, String)
- return {
-   find() {
-     return Qrcodes.find({code : qr})
-   },
-   children: [
-     {
-       find(qrcode) {
-         return Campaigns.find({_id: qrcode.campaignId})
-       }
-     }
-   ]
+  check(qr, String)
+  return {
+    find() {
+      return Qrcodes.find({code : qr})
+    },
+    children: [
+      {
+        find(qrcode) {
+          return Campaigns.find({_id: qrcode.campaignId})
+        }
+      }
+    ]
  }
 });
 
 Meteor.publishComposite('detailQrcodesFromID', function(_id,userId) {
- check(_id, String)
- check(userId, String)
- return {
-   find() {
-     return Qrcodes.find({_id: _id, userId: userId})
-   },
-   children: [
-     {
-       find(qrcode) {
-         return Campaigns.find({_id: qrcode.campaignId})
-       }
-     }
-   ]
- }
+  check(_id, String)
+  check(userId, String)
+  return {
+    find() {
+      return Qrcodes.find({_id: _id, userId: userId})
+    },
+    children: [
+      {
+        find(qrcode) {
+          return Campaigns.find({_id: qrcode.campaignId})
+        }
+      }
+    ]
+  }
 });
 
 Meteor.publishComposite('detailQrcodesWithImageFromQR', function(qr) {

@@ -12,7 +12,7 @@ if (Campaigns.find().count() === 0) {
 
       Accounts.createUser({username:'nook',password:'123456'})
       var nook = Meteor.users.findOne({username:'nook'});
-     
+   
       var bbq = Campaigns.insert({
             title: 'BBQ Plaza ชุด Special',
             number:'BBQ001',
@@ -22,7 +22,7 @@ if (Campaigns.find().count() === 0) {
             enddate:   new moment()._d,
             content:'',
             shopcodes:['1234','5678'],
-            barcode:123456789012,
+            barcode:'123456789012',
             url: 'http://thaiprivileges.com/viva-aviv-the-river/',
             submitted: new Date(now - 2 * 24 * 3600 * 1000),
             userId: fufu._id,
@@ -80,7 +80,7 @@ if (Campaigns.find().count() === 0) {
          enddate: new Date(now + 7 * 24 * 3600 * 1000),
          content:'',
          shopcodes:['1234'],
-         barcode:123456789012,
+         barcode:'123456789012',
          url: 'http://thaiprivileges.com/viva-aviv-the-river/',
          submitted: new Date(now - 2 * 24 * 3600 * 1000),
          userId: nook._id,
@@ -117,7 +117,7 @@ if (Campaigns.find().count() === 0) {
             enddate: new Date(now + 10 * 24 * 3600 * 1000),
             content:'',
             shopcodes:['5678'],
-            barcode:123456789012,
+            barcode:'123456789012',
             url: 'http://thaiprivileges.com/viva-aviv-the-river/',
             submitted: new Date(now - 3 * 24 * 3600 * 1000),
             userId: fufu._id,
@@ -154,7 +154,7 @@ if (Campaigns.find().count() === 0) {
                   enddate: new Date(now + 10 * 24 * 3600 * 1000),
                   content:'',
                   shopcodes:['4361'],
-                  barcode:123456789012,
+                  barcode:'123456789012',
                   url: 'http://google.com/?q=test-' + i,
                   submitted: new Date(now - (i+4) * 24 * 3600 * 1000),
                   userId: fufu._id,
@@ -197,7 +197,7 @@ if (Campaigns.find().count() === 0) {
                   enddate: new Date(now + 10 * 24 * 3600 * 1000),
                   content:'',
                   shopcodes:['4361'],
-                  barcode:123456789012,
+                  barcode:'123456789012',
                   url: 'http://google.com/?q=test-' + i,
                   submitted: new Date(now - (i+4) * 24 * 3600 * 1000),
                   userId: nook._id,
