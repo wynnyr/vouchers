@@ -30,7 +30,9 @@
                   <p class = "redeembody-qr">{{qrcode.body}}</p>
             </div>
             <div class="redeemshow">   
-                  <a class= "btn redeem-btn" data-toggle="modal" data-target="#shopcodemodel">Redeem</a>  
+                  <div class="redeem-code">{{qrcode.code}}</div>
+                  <a class= "btn redeem-btn" data-toggle="modal" data-target="#shopcodemodel">Redeem</a>
+                  
             </div>
 
             <div class="modal" id="shopcodemodel" tabindex="-1" role="dialog">
@@ -52,7 +54,7 @@
                                           </div>
                                     </div>
                                     <div class="modal-footer">
-                                          <span class="label label-default show-redeem-code">{{qrcode.code}}</span>
+                                          <!-- <span class="label label-default show-redeem-code">{{qrcode.code}}</span> -->
                                           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                                           <button type="submit" class="btn btn-primary">Submit</button>
                                           

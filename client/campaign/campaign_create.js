@@ -61,6 +61,7 @@ Template.campaignCreate.events({
     }
 
     var contentId = Session.get('imageUploadId');
+
     if (! contentId)
       contentId = "";
 
@@ -74,6 +75,7 @@ Template.campaignCreate.events({
       content: contentId,
       shopcodes : Session.get("campaignCreateShopcodes"),
       barcode: $(e.target).find('[name=barcode]').val(),
+      showSecretCode : $(e.target).find('[name=secretcode]').prop("checked"),
       url: $(e.target).find('[name=url]').val(),
       redeemtype : e.target.redeemtype.value
     };

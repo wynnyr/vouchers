@@ -68,19 +68,24 @@
         <div class="controls">
             {{> imageUpload}}
         </div>
-
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="secretcode">SecretCode</label>
+        <div class="controls">
+              <label class="checkbox-inline"><input name="secretcode" type="checkbox" {{campaignData.cbshowSecretCode}}>Display secret code in "Redeeme Success" page</label> 
+        </div>
     </div>
     <div class="form-group {{errorClass 'barcode'}}">
         <label class="control-label" for="barcode">EAN-13 Barcode</label>
         <div class="controls">
-              <input name="barcode" id="barcode" type="text" value="{{campaign.barcode}}" placeholder="EAN-13 Barcode" pattern="[0-9]{12}" title="EAN-13 Format" class="form-control"/>
+              <input name="barcode" id="barcode" type="text" value="{{campaignData.barcode}}" placeholder="EAN-13 Barcode" pattern="[0-9]{12}" title="EAN-13 Format" class="form-control"/>
               <span class="help-block">{{errorMessage 'barcode'}}</span>
         </div>
     </div>
     <div class="form-group {{errorClass 'url'}}">
         <label class="control-label" for="headline">Website</label>
         <div class="controls">
-          <input name="url" id="url" type="url" value="{{campaign.url}}" placeholder="http:// or https://" class="form-control"/>
+          <input name="url" id="url" type="url" value="{{campaignData.url}}" placeholder="http:// or https://" class="form-control"/>
           <span class="help-block">{{errorMessage 'url'}}</span>
         </div>
     </div>

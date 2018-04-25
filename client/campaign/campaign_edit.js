@@ -38,12 +38,16 @@ Template.campaignEdit.helpers({
 
       var rdtypeUnique   = '';
       var rdtypeUnverser = '';
+      var cbshowSecretCode = '';
 
       if (this.campaign.redeemtype === 'unique')
         rdtypeUnique ='checked';  
 
       if (this.campaign.redeemtype === 'unverser')
-        rdtypeUnverser= 'checked';
+        rdtypeUnverser = 'checked';
+
+      if (this.campaign.showSecretCode == true)
+        cbshowSecretCode = 'checked';
 
       data = {
         title: this.campaign.title,
@@ -56,6 +60,7 @@ Template.campaignEdit.helpers({
         endtime: moment(this.campaign.enddate).format("HH:mm"),
         rdtypeUnique: rdtypeUnique,
         rdtypeUnverser: rdtypeUnverser,
+        cbshowSecretCode : cbshowSecretCode,
         barcode: this.campaign.barcode,
         url: this.campaign.url,
       }
@@ -117,6 +122,7 @@ Template.campaignEdit.events({
       enddate: moment(cpDate.endDate +" "+ cpDate.endTime,"YYYY-MM-DD HH:mm")._d,
       content: contentId,
       shopcodes : Session.get("campaignEditShopcodes"),
+      showSecretCode : $(e.target).find('[name=secretcode]').prop("checked"),
       barcode: $(e.target).find('[name=barcode]').val(),
       url:  $(e.target).find('[name=url]').val(),
       redeemtype : e.target.redeemtype.value

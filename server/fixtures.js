@@ -1,4 +1,5 @@
 // Fixture data for Test
+
 import { Random } from 'meteor/random'
 
 if (Campaigns.find().count() === 0) {
@@ -11,7 +12,7 @@ if (Campaigns.find().count() === 0) {
 
       Accounts.createUser({username:'nook',password:'123456'})
       var nook = Meteor.users.findOne({username:'nook'});
-      
+     
       var bbq = Campaigns.insert({
             title: 'BBQ Plaza ชุด Special',
             number:'BBQ001',
@@ -27,6 +28,7 @@ if (Campaigns.find().count() === 0) {
             userId: fufu._id,
             author: fufu.username,
             redeemtype:'unique',
+            showSecretCode:true,
             qrcodesCount: 11,
             redeemed: 1,
             totalView: 1,
@@ -84,6 +86,7 @@ if (Campaigns.find().count() === 0) {
          userId: nook._id,
          author: nook.username,
          redeemtype:'unique',
+         showSecretCode:true,
          qrcodesCount: 5,
          redeemed: 0,
          totalView: 0,
@@ -120,6 +123,7 @@ if (Campaigns.find().count() === 0) {
             userId: fufu._id,
             author: fufu.username,
             redeemtype:'unverser',
+            showSecretCode: '1',
             qrcodesCount: 1,
             redeemed: 0,
             totalView: 0,
@@ -156,6 +160,7 @@ if (Campaigns.find().count() === 0) {
                   userId: fufu._id,
                   author: fufu.username,
                   redeemtype:'unverser',
+                  showSecretCode: true,
                   qrcodesCount: 2,
                   redeemed: 0,
                   totalView: 0,
@@ -198,6 +203,7 @@ if (Campaigns.find().count() === 0) {
                   userId: nook._id,
                   author: nook.username,
                   redeemtype:'unverser',
+                  showSecretCode: true,
                   qrcodesCount: 2,
                   redeemed: 0,
                   totalView: 0,
@@ -219,4 +225,7 @@ if (Campaigns.find().count() === 0) {
                   });
             } 
       }
+
+
 }
+

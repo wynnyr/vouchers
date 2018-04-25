@@ -10,6 +10,7 @@ Template.redeemItem.onCreated(function() {
 
  Template.redeemItem.helpers({
   incView: function() {
+    $(document).attr("title", this.campaign.title);
     //console.log('insView->m='+this.mode);
     if (firstLoad == 0 && this.mode != 'preview'){
       firstLoad = 1;
@@ -40,8 +41,8 @@ Template.redeemItem.onCreated(function() {
 		
 		var blob = new Blob( [ ptrImage.data ], { type: "image/jpeg" } );
 		var urlCreator = window.URL || window.webkitURL;
-		var imageUrl = urlCreator.createObjectURL( blob );
-
+    var imageUrl = urlCreator.createObjectURL( blob );
+    $("#favicon").attr("href",imageUrl);
     return '<img id="photopreview" src = " '+imageUrl+ ' " style = "display:block; width:100%;height:Auto;" />'
   },
 
@@ -52,8 +53,14 @@ Template.redeemItem.onCreated(function() {
       var lastRedeem  = moment(this.qrcode.redeemed).format("LL");
       var endCampaign = moment(this.campaign.enddate).format("LL");
       if (Session.get('redeemItemSuccess')){
-        //return '<div class = "redeemed-success"> <h1>The coupon was redeemed.</h1><div>'+ lastRedeem +'</div></div> <div class="redeemstatus-secretcode"> <h1>Secret Code</h1><div>'+ Session.get('redeemSecretCode')+'</div></div> <div class="redeem-barcode" id="barcode">' + Session.get('redeemBarcode')+'</div>'
-        return Spacebars.SafeString('<div class = "redeemed-success"> <h1>The coupon was redeemed.</h1><div>'+ lastRedeem +'</div></div> <div class="redeemstatus-secretcode"> <h1>Secret Code</h1><div>'+ Session.get('redeemSecretCode')+'</div></div>')
+        if(this.campaign.showSecretCode)
+        {
+          return Spacebars.SafeString('<div class = "redeemed-success"> <h1>The coupon was redeemed.</h1><div>'+ lastRedeem +'</div></div> <div class="redeemstatus-secretcode"> <h1>Secret Code</h1><div>'+ Session.get('redeemSecretCode')+'</div></div>')
+        }else
+        {
+          return Spacebars.SafeString('<div class = "redeemed-success"> <h1>The coupon was redeemed.</h1><div>'+ lastRedeem +'</div></div> <div class="redeemstatus-secretcode"> </div>')
+ 
+        }
       }
       else if (Session.get('redeemItemFailure')){
         return Spacebars.SafeString('<div class = "redeemed-failure"> <h1>Invalid merchant.</h1>')
