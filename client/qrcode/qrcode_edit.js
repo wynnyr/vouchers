@@ -67,19 +67,21 @@ Template.qrcodeEdit.events({
     e.preventDefault();
 
     if (confirm('Delete this qrcode?')) {
-      var currentQrcodeId     = this._id;
       var currentQrcodeCode   = this.code;
       var currentCampaignId   = this.campaignId;
 
-      Qrcodes.remove(currentQrcodeId);
-      Campaigns.update(currentCampaignId, {$inc: {qrcodesCount: -1}}, function(error){
-        if (error) {
+      Meteor.call('qrcodeDelete', this, function(error, result) {
+        if (error){
           return Bert.alert( error.reason, 'danger', 'growl-top-right' );
         }
-      });
 
-      Bert.alert( 'Delete qrcode "'+ currentQrcodeCode +'" Complete', 'success', 'growl-top-right' );
-      Router.go('campaignPage', {_id: currentCampaignId});
+        if (result.userAccessDenied){
+          return  Bert.alert( 'permissions', 'danger', 'growl-top-right' );
+        }
+
+        Bert.alert( 'Delete qrcode "'+ currentQrcodeCode +'" Complete', 'success', 'growl-top-right' );
+        Router.go('campaignPage', {_id: currentCampaignId});
+      });
     }
   }
 });
