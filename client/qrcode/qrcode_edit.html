@@ -5,7 +5,7 @@
             <label class="control-label" for="code">Code</label>
             <div class="controls input-group">
                     <div class="input-group-addon">
-                        <div class="glyphicon glyphicon-refresh randoncode" style="color :rgb(255, 0,0)"></div>
+                        <div class="fa fa-refresh randoncode" style="color :rgb(255, 0,0)"></div>
                     </div>
                     <input name="code" id="code" type="text" value="{{codeRandom}}" placeholder="QR Code" class="form-control"/>
                     
@@ -20,7 +20,7 @@
             </div>
         </div>
         <input type="submit" value="Update" class="btn btn-primary submit"/>
-        <a class="btn btn-primary cancel" href="{{pathFor 'campaignPage' _id=this.campaignId }}">Cancel</a>
+        <a class="btn btn-primary cancel" href="{{pathFor 'campaignPage' _id=this.campaignId }}">Back</a>
         <hr/>
         <a class="btn btn-danger delete" href="">Delete</a>
     </form>

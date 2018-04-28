@@ -1,0 +1,14 @@
+<template name="campaignQRImport">
+   {{#unless ready}}
+      {{> spinner}}
+   {{else if ownCampaign campaign}} 
+      <div class="campaign-page page">
+         {{> campaignItem campaign}}
+         <ul class="qrcodes">
+            {{> qrcodeImport campaign}}
+         </ul>
+      </div>
+   {{else}}
+      {{> notFound}}
+   {{/unless}}
+</template>

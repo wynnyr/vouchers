@@ -56,6 +56,8 @@ Template.qrcodeEdit.events({
         errors.code = 'Code "'+ qrcodeProperties.code + '" has already';
         return Session.set('qrcodeEditErrors', errors);
       }
+
+      Bert.alert( 'Update qrcode "'+ qrcodeProperties.code +'" Complete', 'success', 'growl-top-right' );
       Router.go('campaignPage', {_id:currentCampaignId}); 
     });
  
@@ -64,17 +66,19 @@ Template.qrcodeEdit.events({
   'click .delete': function(e) {
     e.preventDefault();
 
-    if (confirm("Delete this QRcode [" + this.code + "] ?")) {
+    if (confirm('Delete this qrcode?')) {
       var currentQrcodeId     = this._id;
+      var currentQrcodeCode   = this.code;
       var currentCampaignId   = this.campaignId;
 
       Qrcodes.remove(currentQrcodeId);
       Campaigns.update(currentCampaignId, {$inc: {qrcodesCount: -1}}, function(error){
         if (error) {
-          return throwError(error.reason);
+          return Bert.alert( error.reason, 'danger', 'growl-top-right' );
         }
       });
 
+      Bert.alert( 'Delete qrcode "'+ currentQrcodeCode +'" Complete', 'success', 'growl-top-right' );
       Router.go('campaignPage', {_id: currentCampaignId});
     }
   }

@@ -9,10 +9,9 @@ if (Campaigns.find().count() === 0) {
       Accounts.createUser({username:'fufu',password:'123456'})
       var fufu = Meteor.users.findOne({username:'fufu'});
     
-
       Accounts.createUser({username:'nook',password:'123456'})
       var nook = Meteor.users.findOne({username:'nook'});
-   
+  
       var bbq = Campaigns.insert({
             title: 'BBQ Plaza ชุด Special',
             number:'BBQ001',
@@ -30,7 +29,7 @@ if (Campaigns.find().count() === 0) {
             redeemtype:'unique',
             showSecretCode:true,
             qrcodesCount: 11,
-            redeemed: 1,
+            totalRedeem: 1,
             totalView: 1,
             totalFail: 0
       }); 
@@ -45,7 +44,8 @@ if (Campaigns.find().count() === 0) {
             secretCode: Random.id(4),
             redeem: 1,
             view: 1,
-            fail:0
+            fail:0,
+            redeemed: now
       });
 
       var qrcode = Qrcodes.findOne(qrId);
@@ -88,7 +88,7 @@ if (Campaigns.find().count() === 0) {
          redeemtype:'unique',
          showSecretCode:true,
          qrcodesCount: 5,
-         redeemed: 0,
+         totalRedeem: 0,
          totalView: 0,
          totalFail: 0
       }); 
@@ -125,7 +125,7 @@ if (Campaigns.find().count() === 0) {
             redeemtype:'unverser',
             showSecretCode: '1',
             qrcodesCount: 1,
-            redeemed: 0,
+            totalRedeem: 0,
             totalView: 0,
             totalFail: 0
          }); 
@@ -162,7 +162,7 @@ if (Campaigns.find().count() === 0) {
                   redeemtype:'unverser',
                   showSecretCode: true,
                   qrcodesCount: 2,
-                  redeemed: 0,
+                  totalRedeem: 0,
                   totalView: 0,
                   totalFail: 0
             });
@@ -205,7 +205,7 @@ if (Campaigns.find().count() === 0) {
                   redeemtype:'unverser',
                   showSecretCode: true,
                   qrcodesCount: 2,
-                  redeemed: 0,
+                  totalRedeem: 0,
                   totalView: 0,
                   totalFail: 0
             });
@@ -225,7 +225,5 @@ if (Campaigns.find().count() === 0) {
                   });
             } 
       }
-
-
 }
 

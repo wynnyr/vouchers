@@ -88,13 +88,14 @@ Template.campaignCreate.events({
     Meteor.call('campaignInsert', campaignProperties, function(error, result) {
     //display the error to the user and abort
       if (error){
-        return throwError(error.reason);
+        return Bert.alert( error.reason, 'danger', 'growl-top-right' );
       }
 
       if (result.postExists){
-        throwError('This campaign has already');
+        Bert.alert( 'This campaign has already.', 'danger', 'growl-top-right' );
       }
- 
+
+      Bert.alert( 'Create '+ campaignProperties.title +' Complete', 'success', 'growl-top-right' );
       Router.go('campaignPage', {_id: result._id});  
     });
   }

@@ -6,7 +6,7 @@
             <div>
                 <a href="{{pathFor 'campaignPage'}}">{{qrcodesCount}} qrcode</a>
                 <spin>/</spin>
-                <a href="{{pathFor 'campaignPage'}}">{{redeemed}} redeemed</a>
+                <a href="{{pathFor 'campaignPage'}}">{{totalRedeem}} redeemed</a>
                 <spin>/</spin>
                 <a href="{{pathFor 'campaignPage'}}">{{totalView}} view</a>
 
@@ -20,6 +20,7 @@
                 <a href="{{pathFor 'campaignEdit'}}" class="btn btn-default">Edit</a>
                 <a href="{{pathFor 'campaignQRInsert'}}" class="btn btn-default">Add</a>
                 <a href="{{pathFor 'campaignQRBulk'}}" class="btn btn-default bulkAdd">Bulk</a>
+                <a href="{{pathFor 'campaignQRImport'}}" class="btn btn-default csvImport">Import</a>
                 <a href="#" class="btn btn-default csvExport">Export</a>
             </div>
         {{/if}}

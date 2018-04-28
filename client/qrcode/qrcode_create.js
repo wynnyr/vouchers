@@ -28,6 +28,7 @@ Template.qrcodeCreate.events({
     e.preventDefault();
 
     var currentCampaignId = this._id;
+    var currentCampaignTitle = this.title;
 
     var qrcodeProperties = {
       campaignId : currentCampaignId,
@@ -42,13 +43,14 @@ Template.qrcodeCreate.events({
 
     Meteor.call('qrcodeInsert', qrcodeProperties, function(error, result) { 
       if (error){
-        return throwError(error.reason);
+        return Bert.alert( error.reason, 'danger', 'growl-top-right' );
       }
   
       if (result.qrcodeExists){
-        return throwError('This qrcode has already');
+        return Bert.alert( 'This qrcode has already!!', 'danger', 'growl-top-right' );
       }
 
+      Bert.alert( 'Add Qrcode "'+qrcodeProperties.code +'" to Campaign', 'success', 'growl-top-right' );
       Router.go('campaignPage', {_id: result.campaignId}); 
         
     });

@@ -137,7 +137,7 @@ Template.campaignEdit.events({
 
     Meteor.call('campaignUpdate', currentCampaignId, campaignProperties, function(error, result) {
       if (error){
-        return throwError(error.reason);
+        return Bert.alert( error.reason, 'danger', 'growl-top-right' );
       }
       if (result.postExists){
         var errors = {};
@@ -146,23 +146,26 @@ Template.campaignEdit.events({
       }
 
       firstOpen=0
+      Bert.alert( 'Update campaign "'+ campaignProperties.title +'" Complete', 'success', 'growl-top-right' );
       Router.go('campaignPage', {_id: result._id}); 
     });
   },
  
   'click .delete': function(e) {
     e.preventDefault();
+    var campaignTitle = this.campaign.title;
  
     if (confirm("Delete this campaign?")) {
       Meteor.call('campaignRemove',this.campaign, function(error, result){
         if (error){
-          return throwError(error.reason);
+          return Bert.alert( error.reason, 'danger', 'growl-top-right' );
         }
 
         if (result.userAccessDenied){
-          return throwError('permissions')
+          return  Bert.alert( 'permissions', 'danger', 'growl-top-right' );
         }
 
+        Bert.alert( 'Delete '+ campaignTitle +' Complete', 'success', 'growl-top-right' );
         Session.set('imageUploadId',"");
         Router.go('campaignsList');
       });

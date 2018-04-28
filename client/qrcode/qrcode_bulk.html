@@ -1,6 +1,6 @@
 <template name="qrcodeBulk">
     <form name="qrcodeBulk" class="qrcodes-form form">
-        <h2>Mass QR Code Generator</h2>
+        <h2>Mass QRCode Generator</h2>
         <div class="form-group {{errorClass 'count'}}">
             <label class="control-label" for="count">Count (max. 50)</label>
             <div class="controls">
@@ -17,6 +17,6 @@
         </div>
 
         <button type="submit" class="btn btn-primary">Generator</button>
-        <a class="btn btn-primary cancel" href="{{pathFor 'campaignPage' _id=this._id}}">Cancel</a>
+        <a class="btn btn-primary cancel" href="{{pathFor 'campaignPage' _id=this._id}}">Back</a>
     </form>
 </template>

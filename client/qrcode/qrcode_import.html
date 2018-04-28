@@ -1,0 +1,15 @@
+<template name="qrcodeImport">
+   <form name="qrImport" class="qrcodes-form form">
+      <h2>Mass QRCode form csv file</h2>
+      {{#unless uploading}}
+      <div class="form-group {{errorClass 'FileFormatErr'}}">
+         <input name="uploadCSV" id="file-input" class="form-control" type="file" accept="text/csv">
+         <span class="help-block">{{errorMessage 'FileFormatErr'}}</span>
+      </div>
+      {{else}}
+         <p><i class="fa fa-spin fa-refresh"></i> Uploading files...</p>
+      {{/unless}}
+   
+      <a class="btn btn-primary cancel" href="{{pathFor 'campaignPage' _id=this._id}}">Back</a>
+   </form>
+</template>

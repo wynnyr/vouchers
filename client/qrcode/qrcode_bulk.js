@@ -29,10 +29,17 @@ Template.qrcodeBulk.events({
 
       Meteor.call('qrcodeBulk', currentCampaignId, QRbody, QRCount, function(error, result){
         if (error){
-          return throwError(error.reason);
+          return Bert.alert( error.reason, 'danger', 'growl-top-right' );
         }
 
-         Router.go('campaignPage', {_id: result.campaignId}); 
+        if(result.qrcodeGen == QRCount){
+          Bert.alert( 'Generate '+QRCount+' Qrcode Complete', 'success', 'growl-top-right' );
+        }
+        else{
+          Bert.alert( 'Generate '+result.qrcodeGen+ ' from '+ QRCount+' Qrcode', 'warning', 'growl-top-right' );
+        }
+
+        Router.go('campaignPage', {_id: result.campaignId}); 
       });
 
    }
