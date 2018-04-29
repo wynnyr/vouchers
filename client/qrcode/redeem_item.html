@@ -31,8 +31,13 @@
             </div>
             <div class="redeemshow">   
                   <div class="redeem-code">{{qrcode.code}}</div>
-                  <a class= "btn redeem-btn" data-toggle="modal" data-target="#shopcodemodel">Redeem</a>
-                  
+                  {{#if campaign.shopcodesLen}}    
+                        <a class= "btn redeem-btn" data-toggle="modal" data-target="#shopcodemodel">Redeem</a>
+                  {{else}}
+                        <div class="redeem-btn">
+                              <h2>Show this code at shop</h2>
+                        </div>
+                  {{/if}}
             </div>
 
             <div class="modal" id="shopcodemodel" tabindex="-1" role="dialog">

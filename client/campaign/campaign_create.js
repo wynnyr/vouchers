@@ -65,7 +65,7 @@ Template.campaignCreate.events({
     if (! contentId)
       contentId = "";
 
-    var campaignProperties = {
+      var campaignProperties = {
       title:  $(e.target).find('[name=title]').val(),
       number: $(e.target).find('[name=number]').val(),
       headline: $(e.target).find('[name=headline]').val(),
@@ -74,6 +74,7 @@ Template.campaignCreate.events({
       enddate: moment(cpDate.endDate +" "+cpDate.endTime,"YYYY-MM-DD HH:mm")._d,
       content: contentId,
       shopcodes : Session.get("campaignCreateShopcodes"),
+      shopcodesLen: Session.get("campaignCreateShopcodes").length,
       barcode: $(e.target).find('[name=barcode]').val(),
       showSecretCode : $(e.target).find('[name=secretcode]').prop("checked"),
       url: $(e.target).find('[name=url]').val(),

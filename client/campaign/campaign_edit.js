@@ -122,6 +122,7 @@ Template.campaignEdit.events({
       enddate: moment(cpDate.endDate +" "+ cpDate.endTime,"YYYY-MM-DD HH:mm")._d,
       content: contentId,
       shopcodes : Session.get("campaignEditShopcodes"),
+      shopcodesLen: Session.get("campaignEditShopcodes").length,
       showSecretCode : $(e.target).find('[name=secretcode]').prop("checked"),
       barcode: $(e.target).find('[name=barcode]').val(),
       url:  $(e.target).find('[name=url]').val(),
