@@ -115,7 +115,7 @@ Meteor.publishComposite('detailQrcodesWithImageFromQR', function(qr) {
         {
           fields:
           {
-            secretCode:false,
+            secretcode:false,
             author:false, 
             userId:false,
             view:false,

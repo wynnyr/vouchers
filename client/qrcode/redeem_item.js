@@ -128,7 +128,7 @@ Template.redeemItem.events({
         if (result.qrcodeRedeemSuccess){
           console.log("redeem status: Redeem Success");
           Session.set('redeemItemSuccess', 1);
-          Session.set('redeemSecretCode', result.secretCode);
+          Session.set('redeemSecretCode', result.secretcode);
           Session.set('redeemBarcode', result.barcode);
           return;
         }
