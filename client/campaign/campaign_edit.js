@@ -143,6 +143,7 @@ Template.campaignEdit.events({
       if (result.postExists){
         var errors = {};
         errors.title = 'Title "'+ campaignProperties.title + '" has already';
+        Bert.alert( 'Title "'+ campaignProperties.title + '" has already', 'danger', 'growl-top-right' );
         return Session.set('campaignEditErrors', errors);
       }
 

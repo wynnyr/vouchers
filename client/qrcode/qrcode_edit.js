@@ -57,7 +57,7 @@ Template.qrcodeEdit.events({
         return Session.set('qrcodeEditErrors', errors);
       }
 
-      Bert.alert( 'Update qrcode "'+ qrcodeProperties.code +'" Complete', 'success', 'growl-top-right' );
+      //Bert.alert( 'Update qrcode "'+ qrcodeProperties.code +'" Complete', 'success', 'growl-top-right' );
       Router.go('campaignPage', {_id:currentCampaignId}); 
     });
  
@@ -79,7 +79,7 @@ Template.qrcodeEdit.events({
           return  Bert.alert( 'permissions', 'danger', 'growl-top-right' );
         }
 
-        Bert.alert( 'Delete qrcode "'+ currentQrcodeCode +'" Complete', 'success', 'growl-top-right' );
+        //Bert.alert( 'Delete qrcode "'+ currentQrcodeCode +'" Complete', 'success', 'growl-top-right' );
         Router.go('campaignPage', {_id: currentCampaignId});
       });
     }

@@ -11,7 +11,7 @@ if (Campaigns.find().count() === 0) {
     
       Accounts.createUser({username:'nook',password:'123456'})
       var nook = Meteor.users.findOne({username:'nook'});
-  
+/*  
       var bbq = Campaigns.insert({
             title: 'BBQ Plaza ชุด Special',
             number:'BBQ001',
@@ -230,5 +230,6 @@ if (Campaigns.find().count() === 0) {
                   });
             } 
       }
+*/
 }
 

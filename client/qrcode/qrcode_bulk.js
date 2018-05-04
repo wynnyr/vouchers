@@ -36,7 +36,7 @@ Template.qrcodeBulk.events({
           Bert.alert( 'Generate '+QRCount+' Qrcode Complete', 'success', 'growl-top-right' );
         }
         else{
-          Bert.alert( 'Generate '+result.qrcodeGen+ ' from '+ QRCount+' Qrcode', 'warning', 'growl-top-right' );
+          Bert.alert( 'Generate Fail '+ (QRCount-result.qrcodeGen) + ' from target'+ QRCount+' Qrcode', 'warning', 'growl-top-right' );
         }
 
         Router.go('campaignPage', {_id: result.campaignId}); 

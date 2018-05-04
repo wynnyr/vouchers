@@ -21,6 +21,7 @@ Template.qrcodeCreate.helpers({
 
 Template.qrcodeCreate.events({
   'click .randoncode': function() {
+    Session.set('qrcodeCreateErrors', {});
     Session.set('qrcodeCodeRandom',Random.id(6));
   },
   
@@ -47,7 +48,8 @@ Template.qrcodeCreate.events({
       }
   
       if (result.qrcodeExists){
-        return Bert.alert( 'This qrcode has already!!', 'danger', 'growl-top-right' );
+        errors.code = 'Code "'+ qrcodeProperties.code + '" has already';
+        return Session.set('qrcodeCreateErrors', errors);
       }
 
       Bert.alert( 'Add Qrcode "'+qrcodeProperties.code +'" to Campaign', 'success', 'growl-top-right' );

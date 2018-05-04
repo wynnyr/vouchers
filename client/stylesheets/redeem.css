@@ -56,6 +56,20 @@
    padding-bottom: 15px;
 }
 
+.redeem-show-shop {
+  display: block;
+  border-radius: 3px;
+  color: #ffffff;
+  background: rgb(17, 179, 240, 1);
+  font-size: 30px;
+  text-align: center;
+  margin-bottom: 10px; 
+  padding-top: 20px;
+  padding-bottom: 15px;
+}
+
+
+
 .redeem-code{
   display: block;
   border-radius: 5px;
